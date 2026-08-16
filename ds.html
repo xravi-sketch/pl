@@ -1,1 +1,720 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>208P - Data Structures Using Java</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #252525;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background: #292929;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #cccccc;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 13px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #198754;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        main {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================== */
+
+        .page-title {
+            margin-bottom: 30px;
+        }
+
+        .page-title h2 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .page-title p {
+            color: #777777;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           PROGRAM LIST
+        ========================== */
+
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+
+        /* =========================
+           PROGRAM CARD
+        ========================== */
+
+        .program-card {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 7px;
+
+            padding: 20px;
+
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            transition: 0.2s ease;
+        }
+
+        .program-card:hover {
+            border-color: #198754;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+
+        /* =========================
+           PROGRAM NUMBER
+        ========================== */
+
+        .program-number {
+            min-width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eeeeee;
+            color: #333333;
+
+            border-radius: 5px;
+
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           PROGRAM CONTENT
+        ========================== */
+
+        .program-content {
+            flex: 1;
+        }
+
+        .program-content h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .program-content p {
+            color: #777777;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .view-btn {
+            text-decoration: none;
+
+            background: #198754;
+            color: white;
+
+            padding: 8px 15px;
+
+            border-radius: 5px;
+
+            font-size: 13px;
+            white-space: nowrap;
+
+            transition: 0.2s ease;
+        }
+
+        .view-btn:hover {
+            background: #146c43;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================== */
+
+        .back-section {
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            color: #198754;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #292929;
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 20px;
+
+            margin-top: 70px;
+        }
+
+        footer p {
+            color: #cccccc;
+            font-size: 13px;
+            margin: 3px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 25px;
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .program-card {
+                align-items: flex-start;
+            }
+
+            .program-number {
+                min-width: 40px;
+                height: 40px;
+            }
+
+            .program-content h3 {
+                font-size: 15px;
+            }
+
+            .program-content p {
+                font-size: 13px;
+            }
+
+            .view-btn {
+                padding: 7px 10px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .program-card {
+                flex-wrap: wrap;
+            }
+
+            .program-content {
+                width: calc(100% - 60px);
+            }
+
+            .view-btn {
+                margin-left: 65px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1>208P - Data Structures Using Java</h1>
+
+        <p>
+            Data Structures Laboratory Programs
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <div class="logo">
+                MCA LAB
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="#programs">Programs</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main id="programs">
+
+
+        <!-- BACK -->
+
+        <div class="back-section">
+
+            <a href="index.html" class="back-btn">
+                ← Back to Subjects
+            </a>
+
+        </div>
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-title">
+
+            <h2>Laboratory Programs</h2>
+
+            <p>
+                List of programs for 208P - Data Structures Using Java
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             PROGRAM LIST
+        ========================== -->
+
+        <div class="program-list">
+
+
+            <!-- PROGRAM 1 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    01
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Array Operations
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Array operations.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 2 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    02
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Singly Linked List Operations
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Singly Linked List operations.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 3 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    03
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Stack Operations Using Linked List
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Stack operations using Linked List.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 4 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    04
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Queue Operations Using Linked List
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Queue operations using Linked List.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 5 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    05
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Binary Tree Insertion and Deletion
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Binary Tree insertion and deletion operations.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 6 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    06
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Binary Tree Traversals
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Binary Tree traversals.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 7 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    07
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Binary Search Tree Operations
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Binary Search Tree operations.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 8 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    08
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Quick Sort and Heap Sort
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Quick Sort and Heap Sort.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 9 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    09
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Insertion Sort and Merge Sort
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Insertion Sort and Merge Sort.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+            <!-- PROGRAM 10 -->
+
+            <div class="program-card">
+
+                <div class="program-number">
+                    10
+                </div>
+
+                <div class="program-content">
+
+                    <h3>
+                        Binary Search and Linear Search
+                    </h3>
+
+                    <p>
+                        Design and develop a Java Program to implement
+                        Binary Search and Linear Search.
+                    </p>
+
+                </div>
+
+                <a href="#" class="view-btn">
+                    View Program
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            208P - Data Structures Using Java
+        </p>
+
+        <p>
+            MCA Laboratory Programs
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
