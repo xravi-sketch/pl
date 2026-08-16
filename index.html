@@ -4,775 +4,483 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>lab programs </title>
+    <title>MCA Lab Programs</title>
 
     <style>
+
+        /* =========================
+           BASIC RESET
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f4f7fb;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f9fa;
             color: #1f2937;
             line-height: 1.6;
         }
 
-        /* ================= HEADER ================= */
+
+        /* =========================
+           HEADER
+        ========================== */
 
         header {
-            background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+            background: #1f2937;
             color: white;
-            padding: 55px 20px;
+            padding: 45px 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            top: -150px;
-            left: -100px;
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            bottom: -130px;
-            right: -80px;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .course-code {
-            display: inline-block;
-            background: #f59e0b;
-            color: #111827;
-            padding: 7px 18px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 15px;
         }
 
         header h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            font-size: 32px;
+            margin-bottom: 8px;
         }
 
         header p {
-            font-size: 18px;
-            color: #dbeafe;
+            color: #d1d5db;
+            font-size: 16px;
         }
 
-        /* ================= NAVBAR ================= */
+
+        /* =========================
+           NAVBAR
+        ========================== */
 
         nav {
-            background: white;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: auto;
             padding: 14px 20px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: #1d4ed8;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
             list-style: none;
+            gap: 25px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #374151;
-            font-weight: 600;
-            transition: 0.3s;
+            font-size: 14px;
         }
 
         .nav-links a:hover {
             color: #2563eb;
         }
 
-        /* ================= COURSE INFO ================= */
 
-        .course-info {
-            max-width: 1200px;
-            margin: 40px auto 20px;
-            padding: 0 20px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .info-box {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-            border: 1px solid #e5e7eb;
-        }
-
-        .info-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-        .info-box h3 {
-            color: #1e40af;
-            margin-bottom: 5px;
-        }
-
-        .info-box p {
-            color: #6b7280;
-        }
-
-        /* ================= MAIN ================= */
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
 
         main {
-            max-width: 1200px;
-            margin: 45px auto;
+            max-width: 1100px;
+            margin: 50px auto;
             padding: 0 20px;
         }
 
+
+        /* =========================
+           SECTION TITLE
+        ========================== */
+
         .section-title {
-            text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .section-title h2 {
-            font-size: 32px;
-            color: #111827;
-            margin-bottom: 8px;
+            font-size: 26px;
+            margin-bottom: 5px;
         }
 
         .section-title p {
             color: #6b7280;
+            font-size: 15px;
         }
 
-        /* ================= SEARCH ================= */
 
-        .search-container {
-            max-width: 650px;
-            margin: 0 auto 35px;
-            position: relative;
-        }
+        /* =========================
+           SUBJECT GRID
+        ========================== */
 
-        .search-container input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #dbeafe;
-            border-radius: 30px;
-            font-size: 16px;
-            outline: none;
-            background: white;
-            transition: 0.3s;
-        }
-
-        .search-container input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-        }
-
-        /* ================= PROGRAM GRID ================= */
-
-        .program-grid {
+        .subject-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            gap: 22px;
         }
 
-        .program-card {
-            background: white;
-            border-radius: 18px;
-            padding: 25px;
+
+        /* =========================
+           SUBJECT CARD
+        ========================== */
+
+        .subject-card {
+            background: #ffffff;
             border: 1px solid #e5e7eb;
-            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06);
-            transition: 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            border-radius: 8px;
+            padding: 25px;
+
+            transition: 0.2s ease;
         }
 
-        .program-card::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(#2563eb, #7c3aed);
+        .subject-card:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
         }
 
-        .program-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
-            border-color: #bfdbfe;
+
+        /* =========================
+           SUBJECT NUMBER
+        ========================== */
+
+        .subject-number {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
 
-        .program-number {
-            display: inline-flex;
-            width: 45px;
-            height: 45px;
-            align-items: center;
-            justify-content: center;
-            background: #dbeafe;
-            color: #1d4ed8;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
 
-        .program-card h3 {
-            color: #111827;
+        /* =========================
+           SUBJECT TITLE
+        ========================== */
+
+        .subject-card h3 {
             font-size: 20px;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            margin-bottom: 8px;
         }
 
-        .program-card p {
+
+        /* =========================
+           SUBJECT DESCRIPTION
+        ========================== */
+
+        .subject-card p {
             color: #6b7280;
             font-size: 14px;
             margin-bottom: 18px;
         }
 
-        .topic-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .view-btn {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 8px 15px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            transition: 0.2s ease;
         }
 
-        .tag {
-            background: #eff6ff;
-            color: #1d4ed8;
-            padding: 5px 11px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
+        .view-btn:hover {
+            background: #1d4ed8;
         }
 
-        /* ================= FOOTER ================= */
+
+        /* =========================
+           FOOTER
+        ========================== */
 
         footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-            margin-top: 60px;
-        }
+            margin-top: 80px;
 
-        footer h2 {
-            margin-bottom: 8px;
+            background: #1f2937;
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 20px;
         }
 
         footer p {
-            color: #94a3b8;
+            color: #d1d5db;
             font-size: 14px;
         }
 
-        .java-badge {
-            display: inline-block;
-            margin-top: 15px;
-            background: #f59e0b;
-            color: #111827;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 13px;
-        }
 
-        /* ================= RESPONSIVE ================= */
+        /* =========================
+           MOBILE
+        ========================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 700px) {
 
             header h1 {
-                font-size: 32px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .program-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
+                font-size: 26px;
             }
 
             .nav-container {
                 justify-content: center;
             }
-        }
 
-        @media (max-width: 500px) {
-
-            header {
-                padding: 40px 15px;
+            .logo {
+                display: none;
             }
 
-            header h1 {
-                font-size: 27px;
+            .nav-links {
+                gap: 18px;
             }
 
-            header p {
-                font-size: 15px;
+            .subject-grid {
+                grid-template-columns: 1fr;
             }
 
-            .section-title h2 {
-                font-size: 26px;
-            }
-
-            .program-card {
-                padding: 20px;
+            main {
+                margin-top: 35px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- ================= HEADER ================= -->
 
-    <header id="home">
-        <div class="header-content">
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-            
+    <header>
 
-            <h1>MCA Lab Programs Semster 2</h1>
+        <h1>MCA Lab Programs</h1>
 
-            <p>
-                Data Structures Laboratory Programs
-            </p>
-             <p>
-                Software Engineering Laboratory Programs
-            </p>
-             <p>
-                Advance DataBase Management Laboratory Programs
-            </p>
+        <p>
+            Practical Programs and Laboratory Resources
+        </p>
 
-        </div>
     </header>
 
 
-    <!-- ================= NAVIGATION ================= -->
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
     <nav>
+
         <div class="nav-container">
-            <ul class="logo">
-                <li><a href="#home">DS Using Java </a></li>
-                <li><a href="#programs">SE Using Java </a></li>
-                <li><a href="#about">sQLCMD And PLSQL</a></li>
-            </ul>
-            
+
+            <div class="logo">
+                MCA LAB
+            </div>
 
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#about">About</a></li>
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#subjects">Subjects</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
             </ul>
 
         </div>
+
     </nav>
 
 
-    <!-- ================= COURSE INFORMATION ================= -->
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
 
-    <section class="course-info" id="about">
-
-        <div class="info-grid">
-
-            <div class="info-box">
-                <div class="info-icon">☕</div>
-                <h3>Language</h3>
-                <p>Java Programming</p>
-                <p>SQL</p>
-            </div>
-
-            <div class="info-box">
-                <div class="info-icon">💻</div>
-                <h3>Subject</h3>
-                <p>Data Structures</p>
-                <p>Software Engineering</p>
-                <p>ADBMS</p>
-            </div>
-
-           
-
-        </div>
-
-    </section>
+    <main id="home">
 
 
-    <!-- ================= PROGRAMS ================= -->
+        <!-- SECTION TITLE -->
 
-    <main id="programs">
+        <div class="section-title" id="subjects">
 
-        <div class="section-title">
-
-            <h2>Java Laboratory Programs</h2>
+            <h2>Laboratory Subjects</h2>
 
             <p>
-                List of programs for 208P – Data Structures Using Java
+                Select a subject to view the list of programs.
             </p>
 
         </div>
 
 
-        <!-- SEARCH -->
+        <!-- =========================
+             SUBJECT CARDS
+        ========================== -->
 
-        <div class="search-container">
+        <div class="subject-grid">
 
-            <input
-                type="text"
-                id="searchBox"
-                placeholder="🔍 Search programs..."
-                onkeyup="searchPrograms()"
-            >
+
+            <!-- DATA STRUCTURES -->
+
+            <div class="subject-card">
+
+                <div class="subject-number">
+                    01
+                </div>
+
+                <h3>
+                    208P – Data Structures Using Java
+                </h3>
+
+                <p>
+                    Java programs covering arrays, linked lists,
+                    stacks, queues, trees, sorting and searching.
+                </p>
+
+                <a href="data-structures.html" class="view-btn">
+                    View Programs
+                </a>
+
+            </div>
+
+
+            <!-- SQL & PL/SQL -->
+
+            <div class="subject-card">
+
+                <div class="subject-number">
+                    02
+                </div>
+
+                <h3>
+                    SQL & PL/SQL
+                </h3>
+
+                <p>
+                    Programs related to SQL queries, database
+                    operations, PL/SQL procedures, functions and triggers.
+                </p>
+
+                <a href="sql-plsql.html" class="view-btn">
+                    View Programs
+                </a>
+
+            </div>
+
+
+            <!-- SOFTWARE ENGINEERING -->
+
+            <div class="subject-card">
+
+                <div class="subject-number">
+                    03
+                </div>
+
+                <h3>
+                    Software Engineering Using Java
+                </h3>
+
+                <p>
+                    Java-based programs related to software engineering,
+                    design, development and implementation.
+                </p>
+
+                <a href="software-engineering.html" class="view-btn">
+                    View Programs
+                </a>
+
+            </div>
+
+
+            <!-- FUTURE SUBJECT -->
+
+            <div class="subject-card">
+
+                <div class="subject-number">
+                    04
+                </div>
+
+                <h3>
+                    More Subjects
+                </h3>
+
+                <p>
+                    Additional MCA laboratory subjects and programs
+                    can be added here later.
+                </p>
+
+                <a href="#" class="view-btn">
+                    Coming Soon
+                </a>
+
+            </div>
+
 
         </div>
 
 
-        <!-- PROGRAM CARDS -->
-
-        <div class="program-grid" id="programList">
-
-
-            <!-- PROGRAM 1 -->
-
-            <div class="program-card">
-
-                <span class="program-number">01</span>
-
-                <h3>
-                    Array Operations
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Array operations.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Array</span>
-                    <span class="tag">Insertion</span>
-                    <span class="tag">Deletion</span>
-                    <span class="tag">Search</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 2 -->
-
-            <div class="program-card">
-
-                <span class="program-number">02</span>
-
-                <h3>
-                    Singly Linked List Operations
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Singly Linked List operations.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Linked List</span>
-                    <span class="tag">Insertion</span>
-                    <span class="tag">Deletion</span>
-                    <span class="tag">Traversal</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 3 -->
-
-            <div class="program-card">
-
-                <span class="program-number">03</span>
-
-                <h3>
-                    Stack Operations Using Linked List
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Stack operations using Linked List.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Stack</span>
-                    <span class="tag">Push</span>
-                    <span class="tag">Pop</span>
-                    <span class="tag">Peek</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 4 -->
-
-            <div class="program-card">
-
-                <span class="program-number">04</span>
-
-                <h3>
-                    Queue Operations Using Linked List
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Queue operations using Linked List.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Queue</span>
-                    <span class="tag">Enqueue</span>
-                    <span class="tag">Dequeue</span>
-                    <span class="tag">Front</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 5 -->
-
-            <div class="program-card">
-
-                <span class="program-number">05</span>
-
-                <h3>
-                    Binary Tree Insertion and Deletion
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Binary Tree insertion and deletion operations.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Binary Tree</span>
-                    <span class="tag">Insertion</span>
-                    <span class="tag">Deletion</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 6 -->
-
-            <div class="program-card">
-
-                <span class="program-number">06</span>
-
-                <h3>
-                    Binary Tree Traversals
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Binary Tree traversals.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Inorder</span>
-                    <span class="tag">Preorder</span>
-                    <span class="tag">Postorder</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 7 -->
-
-            <div class="program-card">
-
-                <span class="program-number">07</span>
-
-                <h3>
-                    Binary Search Tree Operations
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Binary Search Tree operations.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">BST</span>
-                    <span class="tag">Search</span>
-                    <span class="tag">Insertion</span>
-                    <span class="tag">Deletion</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 8 -->
-
-            <div class="program-card">
-
-                <span class="program-number">08</span>
-
-                <h3>
-                    Quick Sort and Heap Sort
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Quick Sort and Heap Sort.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Quick Sort</span>
-                    <span class="tag">Heap Sort</span>
-                    <span class="tag">Sorting</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 9 -->
-
-            <div class="program-card">
-
-                <span class="program-number">09</span>
-
-                <h3>
-                    Insertion Sort and Merge Sort
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Insertion Sort and Merge Sort.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Insertion Sort</span>
-                    <span class="tag">Merge Sort</span>
-                    <span class="tag">Sorting</span>
-                </div>
-
-            </div>
-
-
-            <!-- PROGRAM 10 -->
-
-            <div class="program-card">
-
-                <span class="program-number">10</span>
-
-                <h3>
-                    Binary Search and Linear Search
-                </h3>
-
-                <p>
-                    Design and develop a Java Program to implement
-                    Binary Search and Linear Search.
-                </p>
-
-                <div class="topic-tags">
-                    <span class="tag">Binary Search</span>
-                    <span class="tag">Linear Search</span>
-                    <span class="tag">Searching</span>
-                </div>
-
-            </div>
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <div
+            class="section-title"
+            id="about"
+            style="margin-top: 60px;"
+        >
+
+            <h2>About</h2>
+
+            <p>
+                This website contains MCA laboratory programs
+                organized subject-wise for easy access and reference.
+            </p>
 
         </div>
+
 
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
 
-        <h2>208P – Data Structures Using Java</h2>
-
         <p>
-            Data Structures Laboratory • Java Programming
+            © 2026 MCA Lab Programs
         </p>
 
-        <span class="java-badge">
-            ☕ Powered by Java
-        </span>
+        <p>
+            Data Structures • SQL & PL/SQL • Software Engineering
+        </p>
 
     </footer>
 
-
-    <!-- ================= JAVASCRIPT ================= -->
-
-    <script>
-
-        function searchPrograms() {
-
-            let input =
-                document.getElementById("searchBox")
-                .value
-                .toLowerCase();
-
-            let cards =
-                document.querySelectorAll(".program-card");
-
-            cards.forEach(function(card) {
-
-                let text =
-                    card.innerText.toLowerCase();
-
-                if (text.includes(input)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-
-            });
-
-        }
-
-    </script>
 
 </body>
 </html>
