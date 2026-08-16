@@ -8,7 +8,29 @@
     <title>Program 5 - Binary Tree</title>
 
     <style>
+.code-header {
+    background: #333333;
+    color: white;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
 
+.copy-btn {
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.copy-btn:hover {
+    background: #146c43;
+}
         * {
             margin: 0;
             padding: 0;
@@ -391,6 +413,15 @@
             <div class="content-body">
 
                 <div class="code-container">
+                    <div class="code-header">
+
+        <span>Java</span>
+
+        <button class="copy-btn" onclick="copyCode(this)">
+            Copy Code
+        </button>
+
+    </div>
 
 <pre>
 import java.util.Scanner;
@@ -641,21 +672,21 @@ Do you want to continue (Type y or n) n
         <div class="program-navigation">
 
             <a
-                href="ds-program-4.html"
+                href="ds4.html"
                 class="nav-button"
             >
                 ← Previous Program
             </a>
 
             <a
-                href="data-structures.html"
+                href="ds.html"
                 class="nav-button"
             >
                 Program List
             </a>
 
             <a
-                href="ds-program-6.html"
+                href="ds6.html"
                 class="nav-button"
             >
                 Next Program →
@@ -680,7 +711,25 @@ Do you want to continue (Type y or n) n
         </p>
 
     </footer>
+<script>
 
+function copyCode(button) {
+
+    const code = button
+        .parentElement
+        .nextElementSibling
+        .innerText;
+
+    navigator.clipboard.writeText(code);
+
+    button.innerText = "Copied!";
+
+    setTimeout(function () {
+        button.innerText = "Copy Code";
+    }, 1500);
+}
+
+</script>
 
 </body>
 
