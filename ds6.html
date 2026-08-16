@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Program 6 - Binary Tree Traversals</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #252525;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #292929;
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 13px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #198754;
+        }
+
+        /* MAIN */
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* BACK */
+
+        .back-link {
+            margin-bottom: 25px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .back-link a:hover {
+            color: #198754;
+        }
+
+        /* PROGRAM TITLE */
+
+        .program-title {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 7px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .program-number {
+            color: #198754;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .program-title h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .program-title p {
+            color: #777777;
+            font-size: 14px;
+        }
+
+        /* CONTENT CARD */
+
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 7px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .content-header {
+            background: #eeeeee;
+            border-bottom: 1px solid #dddddd;
+            padding: 13px 18px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .content-body {
+            padding: 20px;
+        }
+
+        /* AIM */
+
+        .aim-text {
+            color: #555555;
+            font-size: 15px;
+        }
+
+        /* CODE */
+
+        .code-container {
+            background: #1e1e1e;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+            padding: 22px;
+            color: #e6e6e6;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre;
+        }
+
+        /* OUTPUT */
+
+        .output-container {
+            background: #222222;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .output-container pre {
+            color: #eeeeee;
+        }
+
+        /* RESULT */
+
+        .result {
+            background: #f1f8f4;
+            border: 1px solid #c8e6d4;
+            border-radius: 5px;
+            padding: 15px;
+            color: #315c43;
+        }
+
+        /* NAVIGATION BUTTONS */
+
+        .program-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            background: #198754;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .nav-button:hover {
+            background: #146c43;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #292929;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #cccccc;
+            font-size: 13px;
+            margin: 3px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 23px;
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .program-title h2 {
+                font-size: 21px;
+            }
+
+            .content-body {
+                padding: 15px;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+
+            .program-navigation {
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>208P - Data Structures Using Java</h1>
+
+        <p>
+            Data Structures Laboratory
+        </p>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <div class="logo">
+                MCA LAB
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="data-structures.html">Programs</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+
+        <!-- BACK -->
+
+        <div class="back-link">
+
+            <a href="data-structures.html">
+                ← Back to Data Structures Programs
+            </a>
+
+        </div>
+
+
+        <!-- PROGRAM TITLE -->
+
+        <div class="program-title">
+
+            <div class="program-number">
+                PROGRAM 06
+            </div>
+
+            <h2>
+                Binary Tree Traversals
+            </h2>
+
+            <p>
+                Design and develop a Java Program to implement
+                Binary Tree traversals.
+            </p>
+
+        </div>
+
+
+        <!-- AIM -->
+
+        <div class="content-card">
+
+            <div class="content-header">
+                Aim
+            </div>
+
+            <div class="content-body">
+
+                <p class="aim-text">
+                    To design and develop a Java program to perform
+                    Postorder, Preorder and Inorder traversals
+                    of a Binary Tree.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- JAVA PROGRAM -->
+
+        <div class="content-card">
+
+            <div class="content-header">
+                Java Program
+            </div>
+
+            <div class="content-body">
+
+                <div class="code-container">
+
+<pre>
+import java.util.Scanner;
+
+public class BinaryTreeTraversal {
+
+    static class Node {
+
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    static Node root = null;
+
+    // Insert
+    static Node insert(Node root, int data) {
+
+        if (root == null)
+            return new Node(data);
+
+        if (data &lt; root.data)
+            root.left = insert(root.left, data);
+        else
+            root.right = insert(root.right, data);
+
+        return root;
+    }
+
+    // Postorder
+    static void postorder(Node root) {
+
+        if (root != null) {
+
+            postorder(root.left);
+            postorder(root.right);
+
+            System.out.print(root.data + " ");
+        }
+    }
+
+    // Preorder
+    static void preorder(Node root) {
+
+        if (root != null) {
+
+            System.out.print(root.data + " ");
+
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+    // Inorder
+    static void inorder(Node root) {
+
+        if (root != null) {
+
+            inorder(root.left);
+
+            System.out.print(root.data + " ");
+
+            inorder(root.right);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        char ch;
+
+        do {
+
+            System.out.println("\nBinary Tree Test");
+
+            System.out.println("\nBinary Tree Operations");
+
+            System.out.println("1. insert");
+            System.out.println("2. empty");
+
+            System.out.print("Enter Your Choice:: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+
+                    System.out.print(
+                        "Enter integer element to insert :: "
+                    );
+
+                    int value = sc.nextInt();
+
+                    root = insert(root, value);
+
+                    System.out.print("post order : ");
+                    postorder(root);
+
+                    System.out.println();
+
+                    System.out.print("Pre order : ");
+                    preorder(root);
+
+                    System.out.println();
+
+                    System.out.print("In order : ");
+                    inorder(root);
+
+                    System.out.println();
+
+                    break;
+
+                case 2:
+
+                    if (root == null)
+                        System.out.println("Tree is empty");
+                    else
+                        System.out.println("Tree is not empty");
+
+                    break;
+
+                default:
+
+                    System.out.println("Invalid choice");
+            }
+
+            System.out.print(
+                "Do you want to continue (Type y or n) "
+            );
+
+            ch = sc.next().charAt(0);
+
+        } while (ch == 'y' || ch == 'Y');
+
+        sc.close();
+    }
+}
+</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAMPLE OUTPUT -->
+
+        <div class="content-card">
+
+            <div class="content-header">
+                Sample Output
+            </div>
+
+            <div class="content-body">
+
+                <div class="output-container">
+
+<pre>
+Binary Tree Test
+
+Binary Tree Operations
+1. insert
+2. empty
+
+Enter Your Choice:: 1
+Enter integer element to insert :: 99
+
+post order : 99
+Pre order : 99
+In order : 99
+
+Do you want to continue (Type y or n) y
+
+Binary Tree Test
+
+Binary Tree Operations
+1. insert
+2. empty
+
+Enter Your Choice:: 1
+Enter integer element to insert :: 50
+
+post order : 50 99
+Pre order : 99 50
+In order : 50 99
+
+Do you want to continue (Type y or n) y
+
+Enter Your Choice:: 1
+Enter integer element to insert :: 120
+
+post order : 50 120 99
+Pre order : 99 50 120
+In order : 50 99 120
+
+Do you want to continue (Type y or n) n
+</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="content-card">
+
+            <div class="content-header">
+                Result
+            </div>
+
+            <div class="content-body">
+
+                <div class="result">
+
+                    The Java program was successfully implemented
+                    to perform Postorder, Preorder and Inorder
+                    traversals of a Binary Tree.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRAM NAVIGATION -->
+
+        <div class="program-navigation">
+
+            <a
+                href="ds-program-5.html"
+                class="nav-button"
+            >
+                ← Previous Program
+            </a>
+
+            <a
+                href="data-structures.html"
+                class="nav-button"
+            >
+                Program List
+            </a>
+
+            <a
+                href="ds-program-7.html"
+                class="nav-button"
+            >
+                Next Program →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            208P - Data Structures Using Java
+        </p>
+
+        <p>
+            MCA Laboratory Programs
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
