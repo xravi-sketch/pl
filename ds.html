@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,713 +5,1339 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>208P - Data Structures Using Java</title>
+    <title>Data Structures Using Java - Laboratory</title>
 
     <style>
 
-        /* =========================
-           RESET
-        ========================== */
-
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f5f5;
-            color: #252525;
-            line-height: 1.6;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eeeeee;
+            color: #333333;
         }
 
-
-        /* =========================
-           HEADER
-        ========================== */
-
         header {
-            background: #292929;
+            background: #555555;
             color: white;
+            padding: 30px 20px;
             text-align: center;
-            padding: 40px 20px;
         }
 
         header h1 {
+            margin: 0 0 8px;
             font-size: 30px;
-            margin-bottom: 8px;
         }
 
         header p {
-            color: #cccccc;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           NAVBAR
-        ========================== */
-
-        nav {
-            background: #ffffff;
-            border-bottom: 1px solid #dddddd;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 13px 20px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333333;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555555;
-            font-size: 14px;
-        }
-
-        .nav-links a:hover {
-            color: #198754;
-        }
-
-
-        /* =========================
-           MAIN
-        ========================== */
-
-        main {
-            max-width: 1100px;
-            margin: 45px auto;
-            padding: 0 20px;
-        }
-
-
-        /* =========================
-           TITLE
-        ========================== */
-
-        .page-title {
-            margin-bottom: 30px;
-        }
-
-        .page-title h2 {
-            font-size: 26px;
-            margin-bottom: 5px;
-        }
-
-        .page-title p {
-            color: #777777;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           PROGRAM LIST
-        ========================== */
-
-        .program-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-
-        /* =========================
-           PROGRAM CARD
-        ========================== */
-
-        .program-card {
-            background: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 7px;
-
-            padding: 20px;
-
-            display: flex;
-            align-items: center;
-            gap: 20px;
-
-            transition: 0.2s ease;
-        }
-
-        .program-card:hover {
-            border-color: #198754;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-        }
-
-
-        /* =========================
-           PROGRAM NUMBER
-        ========================== */
-
-        .program-number {
-            min-width: 45px;
-            height: 45px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #eeeeee;
-            color: #333333;
-
-            border-radius: 5px;
-
-            font-weight: bold;
+            margin: 0;
+            color: #dddddd;
             font-size: 16px;
         }
 
-
-        /* =========================
-           PROGRAM CONTENT
-        ========================== */
-
-        .program-content {
-            flex: 1;
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
         }
 
-        .program-content h3 {
-            font-size: 17px;
-            margin-bottom: 5px;
+        .search-box {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border: 1px solid #aaaaaa;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            outline: none;
         }
 
-        .program-content p {
-            color: #777777;
-            font-size: 14px;
+        .search-box:focus {
+            border-color: #777777;
         }
 
+        .program-list {
+            background: white;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
 
-        /* =========================
-           BUTTON
-        ========================== */
-
-        .view-btn {
-            text-decoration: none;
-
-            background: #198754;
-            color: white;
-
-            padding: 8px 15px;
-
+        .program {
+            padding: 15px;
+            margin-bottom: 8px;
+            background: #f2f2f2;
+            border: 1px solid #cccccc;
             border-radius: 5px;
-
-            font-size: 13px;
-            white-space: nowrap;
-
-            transition: 0.2s ease;
+            cursor: pointer;
+            font-size: 16px;
         }
 
-        .view-btn:hover {
-            background: #146c43;
+        .program:hover {
+            background: #dddddd;
         }
 
-
-        /* =========================
-           BACK BUTTON
-        ========================== */
-
-        .back-section {
-            margin-bottom: 25px;
+        .program.active {
+            background: #d0d0d0;
+            border-color: #888888;
         }
 
-        .back-btn {
-            text-decoration: none;
-            color: #555555;
+        .number {
+            display: inline-block;
+            background: #666666;
+            color: white;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .code-section {
+            margin-top: 25px;
+            background: white;
+            padding: 25px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .code-section h2 {
+            color: #444444;
+            margin-top: 0;
+        }
+
+        pre {
+            background: #2f2f2f;
+            color: #eeeeee;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
             font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
         }
 
-        .back-btn:hover {
-            color: #198754;
+        .copy-btn {
+            background: #666666;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
         }
 
-
-        /* =========================
-           FOOTER
-        ========================== */
+        .copy-btn:hover {
+            background: #444444;
+        }
 
         footer {
-            background: #292929;
-            color: white;
-
             text-align: center;
-
-            padding: 25px 20px;
-
-            margin-top: 70px;
+            padding: 22px;
+            margin-top: 30px;
+            background: #555555;
+            color: white;
         }
 
-        footer p {
-            color: #cccccc;
-            font-size: 13px;
-            margin: 3px;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================== */
-
-        @media (max-width: 700px) {
+        @media(max-width:600px) {
 
             header h1 {
-                font-size: 25px;
+                font-size: 24px;
             }
 
-            .nav-container {
-                justify-content: center;
+            .container {
+                width: 95%;
             }
 
-            .logo {
-                display: none;
+            pre {
+                font-size: 12px;
             }
 
-            .nav-links {
-                gap: 20px;
-            }
-
-            .program-card {
-                align-items: flex-start;
-            }
-
-            .program-number {
-                min-width: 40px;
-                height: 40px;
-            }
-
-            .program-content h3 {
-                font-size: 15px;
-            }
-
-            .program-content p {
-                font-size: 13px;
-            }
-
-            .view-btn {
-                padding: 7px 10px;
-            }
-        }
-
-
-        @media (max-width: 500px) {
-
-            .program-card {
-                flex-wrap: wrap;
-            }
-
-            .program-content {
-                width: calc(100% - 60px);
-            }
-
-            .view-btn {
-                margin-left: 65px;
-            }
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<header>
 
-    <header>
+    <h1>DATA STRUCTURES USING JAVA</h1>
 
-        <h1>208P - Data Structures Using Java</h1>
+    <p>LABORATORY PROGRAMS</p>
 
-        <p>
-            Data Structures Laboratory Programs
-        </p>
-
-    </header>
+</header>
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
 
-    <nav>
-
-        <div class="nav-container">
-
-            <div class="logo">
-                MCA LAB
-            </div>
-
-            <ul class="nav-links">
-
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-
-                <li>
-                    <a href="#programs">Programs</a>
-                </li>
-
-            </ul>
-
-        </div>
-
-    </nav>
+<div class="container">
 
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search program..."
+        onkeyup="searchPrograms()"
+    >
 
-    <main id="programs">
 
 
-        <!-- BACK -->
+    <div class="program-list">
 
-        <div class="back-section">
 
-            <a href="index.html" class="back-btn">
-                ← Back to Subjects
-            </a>
-
+        <div class="program" onclick="showCode(1)">
+            <span class="number">1</span>
+            Array Operations
         </div>
 
 
-        <!-- PAGE TITLE -->
-
-        <div class="page-title">
-
-            <h2>Laboratory Programs</h2>
-
-            <p>
-                List of programs for 208P - Data Structures Using Java
-            </p>
-
+        <div class="program" onclick="showCode(2)">
+            <span class="number">2</span>
+            Singly Linked List Operations
         </div>
 
 
-        <!-- =========================
-             PROGRAM LIST
-        ========================== -->
-
-        <div class="program-list">
-
-
-            <!-- PROGRAM 1 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    01
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Array Operations
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Array operations.
-                    </p>
-
-                </div>
-
-                <a href="ds1.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 2 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    02
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Singly Linked List Operations
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Singly Linked List operations.
-                    </p>
-
-                </div>
-
-                <a href="ds2.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 3 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    03
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Stack Operations Using Linked List
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Stack operations using Linked List.
-                    </p>
-
-                </div>
-
-                <a href="ds3.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 4 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    04
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Queue Operations Using Linked List
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Queue operations using Linked List.
-                    </p>
-
-                </div>
-
-                <a href="ds4.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 5 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    05
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Binary Tree Insertion and Deletion
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Binary Tree insertion and deletion operations.
-                    </p>
-
-                </div>
-
-                <a href="ds5.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 6 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    06
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Binary Tree Traversals
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Binary Tree traversals.
-                    </p>
-
-                </div>
-
-                <a href="ds6.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 7 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    07
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Binary Search Tree Operations
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Binary Search Tree operations.
-                    </p>
-
-                </div>
-
-                <a href="ds7.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 8 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    08
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Quick Sort and Heap Sort
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Quick Sort and Heap Sort.
-                    </p>
-
-                </div>
-
-                <a href="ds8.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 9 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    09
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Insertion Sort and Merge Sort
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Insertion Sort and Merge Sort.
-                    </p>
-
-                </div>
-
-                <a href="ds9.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
-            <!-- PROGRAM 10 -->
-
-            <div class="program-card">
-
-                <div class="program-number">
-                    10
-                </div>
-
-                <div class="program-content">
-
-                    <h3>
-                        Binary Search and Linear Search
-                    </h3>
-
-                    <p>
-                        Design and develop a Java Program to implement
-                        Binary Search and Linear Search.
-                    </p>
-
-                </div>
-
-                <a href="ds10.html" class="view-btn">
-                    View Program
-                </a>
-
-            </div>
-
-
+        <div class="program" onclick="showCode(3)">
+            <span class="number">3</span>
+            Stack Operations using Linked List
         </div>
 
-    </main>
+
+        <div class="program" onclick="showCode(4)">
+            <span class="number">4</span>
+            Queue Operations using Linked List
+        </div>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        <div class="program" onclick="showCode(5)">
+            <span class="number">5</span>
+            Binary Tree Insertion and Deletion
+        </div>
 
-    <footer>
 
-        <p>
-            208P - Data Structures Using Java
-        </p>
+        <div class="program" onclick="showCode(6)">
+            <span class="number">6</span>
+            Binary Tree Traversals
+        </div>
 
-        <p>
-            MCA Laboratory Programs
-        </p>
 
-    </footer>
+        <div class="program" onclick="showCode(7)">
+            <span class="number">7</span>
+            Binary Search Tree Operations
+        </div>
+
+
+        <div class="program" onclick="showCode(8)">
+            <span class="number">8</span>
+            Quick Sort and Heap Sort
+        </div>
+
+
+        <div class="program" onclick="showCode(9)">
+            <span class="number">9</span>
+            Insertion Sort and Merge Sort
+        </div>
+
+
+        <div class="program" onclick="showCode(10)">
+            <span class="number">10</span>
+            Binary Search and Linear Search
+        </div>
+
+
+    </div>
+
+
+
+    <div class="code-section" id="codeSection">
+
+        <h2 id="codeTitle">
+            Select a Program
+        </h2>
+
+
+        <button class="copy-btn" onclick="copyCode()">
+            Copy Code
+        </button>
+
+
+        <pre id="codeOutput">Click any program from the list above.
+Java code will appear here.</pre>
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    Data Structures Using Java | MCA | SV University
+
+</footer>
+
+
+
+<script>
+
+
+const codes = {
+
+
+1: `import java.util.Scanner;
+
+public class ArrayOperations {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[100];
+        int n = 0;
+
+        while (true) {
+
+            System.out.println("\\nArray Operations");
+            System.out.println("1. Insert");
+            System.out.println("2. Delete");
+            System.out.println("3. Display");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter your choice: ");
+            int ch = sc.nextInt();
+
+            if (ch == 1) {
+
+                System.out.print("Enter element: ");
+                a[n++] = sc.nextInt();
+
+            }
+
+            else if (ch == 2) {
+
+                System.out.print("Enter position: ");
+                int pos = sc.nextInt();
+
+                for (int i = pos - 1; i < n - 1; i++)
+                    a[i] = a[i + 1];
+
+                n--;
+
+            }
+
+            else if (ch == 3) {
+
+                System.out.print("Array = ");
+
+                for (int i = 0; i < n; i++)
+                    System.out.print(a[i] + " ");
+
+                System.out.println();
+
+            }
+
+            else
+                break;
+        }
+    }
+}`,
+
+
+2: `import java.util.Scanner;
+
+public class SinglyLinkedList {
+
+    static class Node {
+
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    static Node head;
+
+    static void insertBegin(int data) {
+
+        Node n = new Node(data);
+
+        n.next = head;
+        head = n;
+    }
+
+    static void insertEnd(int data) {
+
+        Node n = new Node(data);
+
+        if (head == null) {
+            head = n;
+            return;
+        }
+
+        Node t = head;
+
+        while (t.next != null)
+            t = t.next;
+
+        t.next = n;
+    }
+
+    static void delete(int pos) {
+
+        if (head == null)
+            return;
+
+        if (pos == 1) {
+            head = head.next;
+            return;
+        }
+
+        Node t = head;
+
+        for (int i = 1; i < pos - 1; i++)
+            t = t.next;
+
+        t.next = t.next.next;
+    }
+
+    static void display() {
+
+        Node t = head;
+
+        System.out.print("Singly Linked List = ");
+
+        while (t != null) {
+
+            System.out.print(t.data + " ");
+            t = t.next;
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("\\nSingly Linked List Operations");
+            System.out.println("1. Insert at beginning");
+            System.out.println("2. Insert at end");
+            System.out.println("3. Delete");
+            System.out.println("4. Show");
+
+            System.out.print("Enter your choice: ");
+            int ch = sc.nextInt();
+
+            if (ch == 1) {
+
+                System.out.print("Enter integer element: ");
+                insertBegin(sc.nextInt());
+
+            } else if (ch == 2) {
+
+                System.out.print("Enter integer element: ");
+                insertEnd(sc.nextInt());
+
+            } else if (ch == 3) {
+
+                System.out.print("Enter position: ");
+                delete(sc.nextInt());
+
+            } else if (ch == 4) {
+
+                display();
+
+            } else {
+                break;
+            }
+        }
+    }
+}`,
+
+
+3: `import java.util.Scanner;
+
+public class LinkedStack {
+
+    static class Node {
+
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    static Node top;
+    static int size = 0;
+
+    static void push(int data) {
+
+        Node n = new Node(data);
+
+        n.next = top;
+        top = n;
+
+        size++;
+    }
+
+    static void pop() {
+
+        if (top == null) {
+            System.out.println("Stack is empty");
+            return;
+        }
+
+        System.out.println("Deleted = " + top.data);
+
+        top = top.next;
+
+        size--;
+    }
+
+    static void peek() {
+
+        if (top == null)
+            System.out.println("Stack is empty");
+        else
+            System.out.println("Top = " + top.data);
+    }
+
+    static void display() {
+
+        Node t = top;
+
+        System.out.print("Stack = ");
+
+        while (t != null) {
+
+            System.out.print(t.data + " ");
+            t = t.next;
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("\\nLinked Stack Operations");
+            System.out.println("1. Push");
+            System.out.println("2. Pop");
+            System.out.println("3. Peek");
+            System.out.println("4. Check Empty");
+            System.out.println("5. Size");
+            System.out.println("6. Display");
+
+            System.out.print("Enter your choice: ");
+            int ch = sc.nextInt();
+
+            switch (ch) {
+
+                case 1:
+                    System.out.print("Enter integer element to push: ");
+                    push(sc.nextInt());
+                    display();
+                    break;
+
+                case 2:
+                    pop();
+                    break;
+
+                case 3:
+                    peek();
+                    break;
+
+                case 4:
+                    System.out.println(top == null ?
+                            "Stack is empty" : "Stack is not empty");
+                    break;
+
+                case 5:
+                    System.out.println("Size = " + size);
+                    break;
+
+                case 6:
+                    display();
+                    break;
+
+                default:
+                    return;
+            }
+        }
+    }
+}`,
+
+
+4: `import java.util.Scanner;
+
+public class LinkedQueue {
+
+    static class Node {
+
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    static Node front, rear;
+    static int size = 0;
+
+    static void insert(int data) {
+
+        Node n = new Node(data);
+
+        if (rear == null) {
+            front = rear = n;
+        } else {
+            rear.next = n;
+            rear = n;
+        }
+
+        size++;
+    }
+
+    static void remove() {
+
+        if (front == null) {
+
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        System.out.println("Removed = " + front.data);
+
+        front = front.next;
+
+        if (front == null)
+            rear = null;
+
+        size--;
+    }
+
+    static void peek() {
+
+        if (front == null)
+            System.out.println("Queue is empty");
+        else
+            System.out.println("Front = " + front.data);
+    }
+
+    static void display() {
+
+        Node t = front;
+
+        System.out.print("Queue = ");
+
+        while (t != null) {
+
+            System.out.print(t.data + " ");
+            t = t.next;
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("\\nQueue Operations");
+            System.out.println("1. Insert");
+            System.out.println("2. Remove");
+            System.out.println("3. Peek");
+            System.out.println("4. Check Empty");
+            System.out.println("5. Size");
+            System.out.println("6. Display");
+
+            System.out.print("Enter your choice: ");
+            int ch = sc.nextInt();
+
+            switch (ch) {
+
+                case 1:
+                    System.out.print("Enter integer element to insert: ");
+                    insert(sc.nextInt());
+                    display();
+                    break;
+
+                case 2:
+                    remove();
+                    break;
+
+                case 3:
+                    peek();
+                    break;
+
+                case 4:
+                    System.out.println(front == null ?
+                            "Queue is empty" : "Queue is not empty");
+                    break;
+
+                case 5:
+                    System.out.println("Size = " + size);
+                    break;
+
+                case 6:
+                    display();
+                    break;
+
+                default:
+                    return;
+            }
+        }
+    }
+}`,
+
+
+5: `class BinaryTree {
+
+    static class Node {
+
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node root;
+
+    Node insert(Node root, int data) {
+
+        if (root == null)
+            return new Node(data);
+
+        if (data < root.data)
+            root.left = insert(root.left, data);
+        else
+            root.right = insert(root.right, data);
+
+        return root;
+    }
+
+    Node delete(Node root, int data) {
+
+        if (root == null)
+            return null;
+
+        if (data < root.data)
+            root.left = delete(root.left, data);
+
+        else if (data > root.data)
+            root.right = delete(root.right, data);
+
+        else {
+
+            if (root.left == null)
+                return root.right;
+
+            if (root.right == null)
+                return root.left;
+
+            root.data = min(root.right);
+
+            root.right = delete(root.right, root.data);
+        }
+
+        return root;
+    }
+
+    int min(Node root) {
+
+        int value = root.data;
+
+        while (root.left != null) {
+
+            root = root.left;
+            value = root.data;
+        }
+
+        return value;
+    }
+
+    void inorder(Node root) {
+
+        if (root != null) {
+
+            inorder(root.left);
+            System.out.print(root.data + " ");
+            inorder(root.right);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        BinaryTree t = new BinaryTree();
+
+        t.root = t.insert(t.root, 55);
+        t.root = t.insert(t.root, 30);
+        t.root = t.insert(t.root, 70);
+
+        System.out.print("In order: ");
+        t.inorder(t.root);
+
+        t.root = t.delete(t.root, 30);
+
+        System.out.print("\\nAfter deletion: ");
+        t.inorder(t.root);
+    }
+}`,
+
+
+6: `class BinaryTreeTraversal {
+
+    static class Node {
+
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node root;
+
+    void preorder(Node root) {
+
+        if (root != null) {
+
+            System.out.print(root.data + " ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+    void inorder(Node root) {
+
+        if (root != null) {
+
+            inorder(root.left);
+            System.out.print(root.data + " ");
+            inorder(root.right);
+        }
+    }
+
+    void postorder(Node root) {
+
+        if (root != null) {
+
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.data + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        BinaryTreeTraversal t =
+            new BinaryTreeTraversal();
+
+        t.root = new Node(99);
+
+        t.root.left = new Node(50);
+        t.root.right = new Node(120);
+
+        System.out.print("Pre order : ");
+        t.preorder(t.root);
+
+        System.out.print("\\nIn order : ");
+        t.inorder(t.root);
+
+        System.out.print("\\nPost order : ");
+        t.postorder(t.root);
+    }
+}`,
+
+
+7: `import java.util.Scanner;
+
+class BinarySearchTree {
+
+    static class Node {
+
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node root;
+
+    Node insert(Node root, int data) {
+
+        if (root == null)
+            return new Node(data);
+
+        if (data < root.data)
+            root.left = insert(root.left, data);
+        else
+            root.right = insert(root.right, data);
+
+        return root;
+    }
+
+    boolean search(Node root, int data) {
+
+        if (root == null)
+            return false;
+
+        if (root.data == data)
+            return true;
+
+        if (data < root.data)
+            return search(root.left, data);
+
+        return search(root.right, data);
+    }
+
+    void inorder(Node root) {
+
+        if (root != null) {
+
+            inorder(root.left);
+            System.out.print(root.data + " ");
+            inorder(root.right);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        BinarySearchTree t =
+            new BinarySearchTree();
+
+        t.root = t.insert(t.root, 50);
+        t.root = t.insert(t.root, 30);
+        t.root = t.insert(t.root, 70);
+        t.root = t.insert(t.root, 20);
+        t.root = t.insert(t.root, 40);
+
+        System.out.print("BST = ");
+        t.inorder(t.root);
+
+        System.out.print("\\nEnter element to search: ");
+
+        int n = sc.nextInt();
+
+        if (t.search(t.root, n))
+            System.out.println("Element found");
+        else
+            System.out.println("Element not found");
+    }
+}`,
+
+
+8: `import java.util.Arrays;
+
+public class QuickHeapSort {
+
+    static void quickSort(int[] a, int low, int high) {
+
+        if (low < high) {
+
+            int p = partition(a, low, high);
+
+            quickSort(a, low, p - 1);
+            quickSort(a, p + 1, high);
+        }
+    }
+
+    static int partition(int[] a, int low, int high) {
+
+        int pivot = a[high];
+
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+
+            if (a[j] < pivot) {
+
+                i++;
+
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+
+        int temp = a[i + 1];
+        a[i + 1] = a[high];
+        a[high] = temp;
+
+        return i + 1;
+    }
+
+    static void heapSort(int[] a) {
+
+        for (int i = a.length / 2 - 1; i >= 0; i--)
+            heapify(a, a.length, i);
+
+        for (int i = a.length - 1; i > 0; i--) {
+
+            int temp = a[0];
+            a[0] = a[i];
+            a[i] = temp;
+
+            heapify(a, i, 0);
+        }
+    }
+
+    static void heapify(int[] a, int n, int i) {
+
+        int largest = i;
+
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < n && a[left] > a[largest])
+            largest = left;
+
+        if (right < n && a[right] > a[largest])
+            largest = right;
+
+        if (largest != i) {
+
+            int temp = a[i];
+            a[i] = a[largest];
+            a[largest] = temp;
+
+            heapify(a, n, largest);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] a = {50, 20, 40, 10, 30};
+
+        int[] b = a.clone();
+
+        quickSort(a, 0, a.length - 1);
+
+        heapSort(b);
+
+        System.out.println(
+            "Quick Sort = " + Arrays.toString(a)
+        );
+
+        System.out.println(
+            "Heap Sort = " + Arrays.toString(b)
+        );
+    }
+}`,
+
+
+9: `import java.util.Arrays;
+
+public class InsertionMergeSort {
+
+    static void insertionSort(int[] a) {
+
+        for (int i = 1; i < a.length; i++) {
+
+            int key = a[i];
+
+            int j = i - 1;
+
+            while (j >= 0 && a[j] > key) {
+
+                a[j + 1] = a[j];
+
+                j--;
+            }
+
+            a[j + 1] = key;
+        }
+    }
+
+    static void mergeSort(
+        int[] a,
+        int left,
+        int right
+    ) {
+
+        if (left < right) {
+
+            int mid =
+                (left + right) / 2;
+
+            mergeSort(a, left, mid);
+
+            mergeSort(a, mid + 1, right);
+
+            merge(a, left, mid, right);
+        }
+    }
+
+    static void merge(
+        int[] a,
+        int left,
+        int mid,
+        int right
+    ) {
+
+        int[] temp =
+            new int[right - left + 1];
+
+        int i = left;
+        int j = mid + 1;
+        int k = 0;
+
+        while (i <= mid && j <= right) {
+
+            if (a[i] < a[j])
+                temp[k++] = a[i++];
+            else
+                temp[k++] = a[j++];
+        }
+
+        while (i <= mid)
+            temp[k++] = a[i++];
+
+        while (j <= right)
+            temp[k++] = a[j++];
+
+        for (i = 0; i < temp.length; i++)
+            a[left + i] = temp[i];
+    }
+
+    public static void main(String[] args) {
+
+        int[] a = {
+            50, 20, 40, 10, 30
+        };
+
+        int[] b = a.clone();
+
+        insertionSort(a);
+
+        mergeSort(
+            b,
+            0,
+            b.length - 1
+        );
+
+        System.out.println(
+            "Insertion Sort = "
+            + Arrays.toString(a)
+        );
+
+        System.out.println(
+            "Merge Sort = "
+            + Arrays.toString(b)
+        );
+    }
+}`,
+
+
+10: `import java.util.Scanner;
+
+public class Search {
+
+    static int linearSearch(
+        int[] a,
+        int key
+    ) {
+
+        for (int i = 0; i < a.length; i++) {
+
+            if (a[i] == key)
+                return i;
+        }
+
+        return -1;
+    }
+
+    static int binarySearch(
+        int[] a,
+        int key
+    ) {
+
+        int low = 0;
+        int high = a.length - 1;
+
+        while (low <= high) {
+
+            int mid =
+                (low + high) / 2;
+
+            if (a[mid] == key)
+                return mid;
+
+            if (key < a[mid])
+                high = mid - 1;
+            else
+                low = mid + 1;
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc =
+            new Scanner(System.in);
+
+        int[] a =
+            {10, 20, 30, 40, 50};
+
+        System.out.print(
+            "Enter element: "
+        );
+
+        int key = sc.nextInt();
+
+        int l =
+            linearSearch(a, key);
+
+        int b =
+            binarySearch(a, key);
+
+        if (l != -1)
+            System.out.println(
+                "Linear Search: Element found"
+            );
+        else
+            System.out.println(
+                "Linear Search: Element not found"
+            );
+
+        if (b != -1)
+            System.out.println(
+                "Binary Search: Element found"
+            );
+        else
+            System.out.println(
+                "Binary Search: Element not found"
+            );
+    }
+}`
+
+};
+
+
+const programNames = {
+
+    1: "Array Operations",
+    2: "Singly Linked List Operations",
+    3: "Stack Operations using Linked List",
+    4: "Queue Operations using Linked List",
+    5: "Binary Tree Insertion and Deletion",
+    6: "Binary Tree Traversals",
+    7: "Binary Search Tree Operations",
+    8: "Quick Sort and Heap Sort",
+    9: "Insertion Sort and Merge Sort",
+    10: "Binary Search and Linear Search"
+
+};
+
+
+
+function showCode(number) {
+
+    document.getElementById("codeTitle").innerText =
+        number + ". " + programNames[number];
+
+    document.getElementById("codeOutput").innerText =
+        codes[number];
+
+
+    document.querySelectorAll(".program")
+        .forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+    document.querySelectorAll(".program")
+        [number - 1]
+        .classList.add("active");
+
+
+    document.getElementById("codeSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+function copyCode() {
+
+    const code =
+        document.getElementById("codeOutput").innerText;
+
+    navigator.clipboard.writeText(code);
+
+    alert("Code copied successfully!");
+
+}
+
+
+
+function searchPrograms() {
+
+    const search =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+
+    const programs =
+        document.querySelectorAll(".program");
+
+
+    programs.forEach(program => {
+
+        const text =
+            program.innerText.toLowerCase();
+
+
+        if (text.includes(search)) {
+
+            program.style.display = "block";
+
+        }
+
+        else {
+
+            program.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
 
 
 </body>
