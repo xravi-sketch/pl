@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DBMS Laboratory Programs</title>
+
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #eeeeee;
+        color: #333333;
+    }
+
+    header {
+        background: #555555;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0 0 8px;
+        font-size: 30px;
+    }
+
+    header p {
+        margin: 0;
+        font-size: 16px;
+        color: #dddddd;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1100px;
+        margin: 30px auto;
+    }
+
+    .search-box {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border: 1px solid #aaaaaa;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        background: white;
+        outline: none;
+    }
+
+    .search-box:focus {
+        border-color: #777777;
+    }
+
+    .program-list {
+        background: #ffffff;
+        padding: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+    }
+
+    .program {
+        padding: 15px;
+        margin-bottom: 8px;
+        background: #f2f2f2;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .program:hover {
+        background: #dddddd;
+    }
+
+    .program.active {
+        background: #d0d0d0;
+        border-color: #888888;
+    }
+
+    .number {
+        display: inline-block;
+        background: #666666;
+        color: white;
+        width: 28px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .code-section {
+        margin-top: 25px;
+        background: white;
+        padding: 25px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+    }
+
+    .code-section h2 {
+        color: #444444;
+        margin-top: 0;
+    }
+
+    pre {
+        background: #2f2f2f;
+        color: #eeeeee;
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+    }
+
+    .copy-btn {
+        background: #666666;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 15px;
+    }
+
+    .copy-btn:hover {
+        background: #444444;
+    }
+
+    footer {
+        text-align: center;
+        padding: 22px;
+        margin-top: 30px;
+        background: #555555;
+        color: white;
+    }
+
+    @media(max-width:600px) {
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            width: 95%;
+        }
+
+        pre {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>DATABASE MANAGEMENT SYSTEMS</h1>
+    <p>LABORATORY PROGRAMS</p>
+</header>
+
+
+<div class="container">
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search program..."
+        onkeyup="searchPrograms()"
+    >
+
+
+    <div class="program-list" id="programList">
+
+        <div class="program" onclick="showCode(1)">
+            <span class="number">1</span>
+            SQL Commands with Master–Child Relationship
+        </div>
+
+        <div class="program" onclick="showCode(2)">
+            <span class="number">2</span>
+            Object Types
+        </div>
+
+        <div class="program" onclick="showCode(3)">
+            <span class="number">3</span>
+            VARRAYS in SQL
+        </div>
+
+        <div class="program" onclick="showCode(4)">
+            <span class="number">4</span>
+            Count Records Using Cursor
+        </div>
+
+        <div class="program" onclick="showCode(5)">
+            <span class="number">5</span>
+            Total Salary Using Cursor
+        </div>
+
+        <div class="program" onclick="showCode(6)">
+            <span class="number">6</span>
+            Electricity Bill
+        </div>
+
+        <div class="program" onclick="showCode(7)">
+            <span class="number">7</span>
+            EAMCET / ICET Rank
+        </div>
+
+        <div class="program" onclick="showCode(8)">
+            <span class="number">8</span>
+            Bank Transaction Trigger
+        </div>
+
+        <div class="program" onclick="showCode(9)">
+            <span class="number">9</span>
+            Batch Transaction Processing
+        </div>
+
+        <div class="program" onclick="showCode(10)">
+            <span class="number">10</span>
+            Old Values Trigger
+        </div>
+
+        <div class="program" onclick="showCode(11)">
+            <span class="number">11</span>
+            Factorial Function
+        </div>
+
+        <div class="program" onclick="showCode(12)">
+            <span class="number">12</span>
+            OVERDRAFT Exception
+        </div>
+
+        <div class="program" onclick="showCode(13)">
+            <span class="number">13</span>
+            Employee Record Type
+        </div>
+
+        <div class="program" onclick="showCode(14)">
+            <span class="number">14</span>
+            Statistical Package
+        </div>
+
+        <div class="program" onclick="showCode(15)">
+            <span class="number">15</span>
+            Dynamic SQL
+        </div>
+
+    </div>
+
+
+    <!-- CODE WILL APPEAR HERE -->
+
+    <div class="code-section" id="codeSection">
+
+        <h2 id="codeTitle">
+            Select a Program
+        </h2>
+
+        <button class="copy-btn" onclick="copyCode()">
+            Copy Code
+        </button>
+
+        <pre id="codeOutput">
+Click any program from the list above.
+SQL / PL-SQL code will appear here.
+        </pre>
+
+    </div>
+
+</div>
+
+
+<footer>
+    DBMS Laboratory | MCA | SV University
+</footer>
+
+
+
+<script>
+
+const codes = {
+
+1: `-- MASTER TABLE
+
+CREATE TABLE department (
+    deptno NUMBER(5) PRIMARY KEY,
+    dname VARCHAR2(20)
+);
+
+-- CHILD TABLE
+
+CREATE TABLE employee (
+    empno NUMBER(5) PRIMARY KEY,
+    ename VARCHAR2(20),
+    job VARCHAR2(20),
+    salary NUMBER(10,2),
+    deptno NUMBER(5),
+
+    CONSTRAINT emp_dept_fk
+    FOREIGN KEY (deptno)
+    REFERENCES department(deptno)
+);
+
+-- INSERT VALUES
+
+INSERT INTO department
+VALUES (10, 'MCA');
+
+INSERT INTO department
+VALUES (20, 'MBA');
+
+INSERT INTO employee
+VALUES (101, 'JOHN', 'PROGRAMMER', 30000, 10);
+
+INSERT INTO employee
+VALUES (102, 'SMITH', 'ANALYST', 35000, 10);
+
+-- SELECT
+
+SELECT * FROM department;
+
+SELECT * FROM employee;
+
+-- JOIN
+
+SELECT e.empno,
+       e.ename,
+       d.dname
+FROM employee e
+JOIN department d
+ON e.deptno = d.deptno;
+
+-- UPDATE
+
+UPDATE employee
+SET salary = 40000
+WHERE empno = 101;
+
+-- DELETE
+
+DELETE FROM employee
+WHERE empno = 102;`,
+
+
+2: `CREATE TYPE location AS OBJECT(
+    doorno VARCHAR2(10),
+    street VARCHAR2(15),
+    city VARCHAR2(20)
+);
+/
+
+CREATE TYPE person AS OBJECT(
+    name VARCHAR2(20),
+    age NUMBER(10),
+    gender CHAR(1)
+);
+/
+
+CREATE TYPE qualification AS OBJECT(
+    course VARCHAR2(10),
+    class VARCHAR2(10),
+    avg VARCHAR2(10)
+);
+/
+
+CREATE TYPE dept AS OBJECT(
+    deptno NUMBER(5),
+    dname VARCHAR2(10)
+);
+/
+
+CREATE TABLE employ(
+    eid NUMBER(10),
+    address location,
+    info person,
+    quali qualification,
+    department dept,
+    salary NUMBER(8,2)
+);
+
+INSERT INTO employ VALUES(
+    112,
+    location('d3','kiran apt','tirupati'),
+    person('swathi',30,'f'),
+    qualification('m.tech','first','72'),
+    dept(5,'mca'),
+    20000
+);
+
+SELECT * FROM employ;`,
+
+
+3: `CREATE TYPE subjects
+IS VARRAY(10) OF VARCHAR2(10);
+/
+
+CREATE TABLE students(
+    sid NUMBER(5),
+    sname VARCHAR2(20),
+    dno NUMBER(6),
+    sem VARCHAR2(10),
+    sub subjects
+);
+
+INSERT INTO students
+VALUES(
+    111,
+    'swathi',
+    5,
+    'first',
+    subjects('dms','ps','ip','co','om')
+);
+
+INSERT INTO students
+VALUES(
+    112,
+    'anil',
+    5,
+    'second',
+    subjects('afm','ds','fs','os','or')
+);
+
+SELECT * FROM students;
+
+SELECT sub.*
+FROM students s,
+TABLE(s.sub) sub;`,
+
+
+4: `CREATE TABLE empswa(
+    eno NUMBER(10),
+    ename VARCHAR2(20),
+    designation VARCHAR2(20),
+    dno NUMBER(5),
+    salary NUMBER(8,2)
+);
+
+INSERT INTO empswa
+VALUES(
+    111,
+    'kalpana',
+    'manager',
+    5,
+    20000
+);
+
+INSERT INTO empswa
+VALUES(
+    112,
+    'siva',
+    'teacher',
+    3,
+    30000
+);
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+
+    CURSOR cur IS
+        SELECT * FROM empswa;
+
+    details empswa%ROWTYPE;
+
+BEGIN
+
+    OPEN cur;
+
+    LOOP
+
+        FETCH cur INTO details;
+
+        EXIT WHEN cur%NOTFOUND;
+
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE(
+        'The no of records in employee table are '
+        || cur%ROWCOUNT
+    );
+
+END;
+/`,
+
+
+5: `CREATE TABLE empl11(
+    eno NUMBER(10),
+    basic NUMBER(8,2),
+    hra NUMBER(8,2),
+    da NUMBER(8,2),
+    tot_deduction NUMBER(8,2),
+    netsal NUMBER(8,2),
+    grosssal NUMBER(8,2)
+);
+
+INSERT INTO empl11
+(eno,basic,hra,da,tot_deduction)
+VALUES(
+    3,
+    20000,
+    8000,
+    2000,
+    3000
+);
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+
+    no NUMBER;
+    totsal1 NUMBER := 0;
+    gross NUMBER;
+
+    CURSOR ec(n NUMBER)
+    IS
+        SELECT *
+        FROM empl11
+        WHERE eno <= n;
+
+    rw ec%ROWTYPE;
+
+BEGIN
+
+    no := &no;
+
+    OPEN ec(no);
+
+    LOOP
+
+        FETCH ec INTO rw;
+
+        EXIT WHEN ec%NOTFOUND;
+
+        totsal1 :=
+            rw.basic + rw.hra + rw.da;
+
+        gross :=
+            totsal1 - rw.tot_deduction;
+
+        UPDATE empl11
+        SET netsal = totsal1,
+            grosssal = gross
+        WHERE eno = rw.eno;
+
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Total salary = ' || totsal1
+    );
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Gross salary = ' || gross
+    );
+
+    CLOSE ec;
+
+END;
+/`,
+
+
+6: `CREATE TABLE electricity(
+    meter NUMBER(10) PRIMARY KEY,
+    cname VARCHAR2(20),
+    address VARCHAR2(25),
+    category CHAR(1),
+    cr NUMBER(10),
+    pr NUMBER(10),
+    arrear NUMBER(10),
+    units NUMBER(10),
+    unitcost NUMBER(8,2),
+    amount NUMBER(8,2),
+    lastwof DATE,
+    lastwf DATE
+);
+
+INSERT INTO electricity
+(
+    meter,
+    cname,
+    address,
+    category,
+    cr,
+    pr,
+    arrear
+)
+VALUES(
+    111,
+    'swathi',
+    'tpt',
+    'a',
+    2000,
+    1000,
+    0
+);
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+
+    CURSOR cu IS
+        SELECT * FROM electricity;
+
+    unit1 NUMBER(10);
+    amount1 NUMBER(10);
+
+BEGIN
+
+    FOR c IN cu
+    LOOP
+
+        IF c.category = 'a' THEN
+            c.unitcost := 1.50;
+
+        ELSIF c.category = 'b' THEN
+            c.unitcost := 2.50;
+
+        ELSE
+            c.unitcost := 3.00;
+
+        END IF;
+
+        unit1 := c.cr - c.pr;
+
+        amount1 :=
+            unit1 * c.unitcost + c.arrear;
+
+        UPDATE electricity
+        SET units = unit1,
+            amount = amount1,
+            unitcost = c.unitcost
+        WHERE meter = c.meter;
+
+    END LOOP;
+
+END;
+/`,
+
+
+7: `CREATE TABLE rank(
+    name VARCHAR2(15),
+    hallticket NUMBER(10),
+    address VARCHAR2(30),
+    maths NUMBER(5),
+    physics NUMBER(5),
+    chemistry NUMBER(5),
+    total NUMBER(5),
+    rank NUMBER(10),
+    PRIMARY KEY(hallticket)
+);
+
+INSERT INTO rank
+(name,hallticket,address,maths,physics,chemistry)
+VALUES(
+    'john',
+    12345,
+    'tpt',
+    56,
+    78,
+    90
+);
+
+INSERT INTO rank
+(name,hallticket,address,maths,physics,chemistry)
+VALUES(
+    'kalpana',
+    456789,
+    'chittoor',
+    77,
+    88,
+    99
+);
+
+INSERT INTO rank
+(name,hallticket,address,maths,physics,chemistry)
+VALUES(
+    'smith',
+    275845,
+    'plr',
+    44,
+    66,
+    55
+);
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+
+    temp NUMBER(5);
+    rank_rec rank%ROWTYPE;
+
+    CURSOR rank_cur IS
+        SELECT *
+        FROM rank
+        ORDER BY total DESC;
+
+BEGIN
+
+    temp := 1;
+
+    OPEN rank_cur;
+
+    LOOP
+
+        FETCH rank_cur INTO rank_rec;
+
+        EXIT WHEN rank_cur%NOTFOUND;
+
+        UPDATE rank
+        SET rank = temp
+        WHERE hallticket =
+              rank_rec.hallticket;
+
+        DBMS_OUTPUT.PUT_LINE(
+            'Student roll no: '
+            || rank_rec.hallticket
+        );
+
+        DBMS_OUTPUT.PUT_LINE(
+            'Student name: '
+            || rank_rec.name
+        );
+
+        DBMS_OUTPUT.PUT_LINE(
+            'Total: '
+            || rank_rec.total
+        );
+
+        DBMS_OUTPUT.PUT_LINE(
+            'Rank: '
+            || temp
+        );
+
+        temp := temp + 1;
+
+    END LOOP;
+
+    CLOSE rank_cur;
+
+END;
+/`,
+
+
+8: `CREATE TABLE bank1(
+    cid NUMBER(10),
+    cname VARCHAR2(20)
+);
+
+CREATE TABLE bank_log(
+    login VARCHAR2(20),
+    time VARCHAR2(20),
+    da DATE
+);
+
+INSERT INTO bank1
+VALUES(111,'swathi');
+
+INSERT INTO bank1
+VALUES(112,'anil');
+
+INSERT INTO bank1
+VALUES(113,'vinu');
+
+CREATE OR REPLACE TRIGGER bank
+AFTER INSERT OR UPDATE ON bank1
+FOR EACH ROW
+
+DECLARE
+
+    weekday VARCHAR2(20);
+    time CHAR(10);
+
+BEGIN
+
+    weekday :=
+        TO_CHAR(SYSDATE,'DAY');
+
+    time :=
+        TO_CHAR(SYSDATE,'HH24');
+
+    IF
+       (weekday = 'saturday'
+        AND time >= '12')
+       OR weekday = 'sunday'
+    THEN
+
+        INSERT INTO bank_log
+        VALUES(
+            :NEW.cname,
+            time,
+            SYSDATE
+        );
+
+    ELSIF
+        time <= '10'
+        OR time >= '17'
+    THEN
+
+        INSERT INTO bank_log
+        VALUES(
+            :NEW.cname,
+            time,
+            SYSDATE
+        );
+
+    END IF;
+
+END;
+/`,
+
+
+9: `CREATE TABLE account1(
+    aid NUMBER(10),
+    bal NUMBER(8,2)
+);
+
+CREATE TABLE action(
+    aid NUMBER(10),
+    operation VARCHAR2(10),
+    new_value NUMBER(10),
+    status VARCHAR2(10),
+    timetag DATE
+);
+
+INSERT INTO account1
+VALUES(111,12000);
+
+INSERT INTO account1
+VALUES(112,22000);
+
+INSERT INTO account1
+VALUES(113,32000);
+
+CREATE OR REPLACE TRIGGER account2
+AFTER INSERT OR UPDATE OR DELETE
+ON account1
+FOR EACH ROW
+
+BEGIN
+
+    IF INSERTING THEN
+
+        INSERT INTO action
+        VALUES(
+            :NEW.aid,
+            'i',
+            :NEW.bal,
+            'y',
+            SYSDATE
+        );
+
+    END IF;
+
+    IF UPDATING THEN
+
+        INSERT INTO action
+        VALUES(
+            :NEW.aid,
+            'u',
+            :NEW.bal,
+            'y',
+            SYSDATE
+        );
+
+    END IF;
+
+    IF DELETING THEN
+
+        INSERT INTO action
+        VALUES(
+            :OLD.aid,
+            'd',
+            :OLD.bal,
+            'y',
+            SYSDATE
+        );
+
+    END IF;
+
+END;
+/`,
+
+
+10: `CREATE TABLE student2(
+    sno NUMBER(10),
+    sname VARCHAR2(20),
+    course VARCHAR2(20)
+);
+
+CREATE TABLE student3(
+    sno NUMBER(10),
+    sname VARCHAR2(20),
+    course VARCHAR2(20)
+);
+
+INSERT INTO student2
+VALUES(111,'swathi','mca');
+
+INSERT INTO student2
+VALUES(112,'anil','mba');
+
+INSERT INTO student2
+VALUES(113,'sathvik','m.tech');
+
+INSERT INTO student2
+VALUES(114,'madhu','mba');
+
+CREATE OR REPLACE TRIGGER std1
+BEFORE DELETE ON student2
+FOR EACH ROW
+
+BEGIN
+
+    INSERT INTO student3
+    VALUES(
+        :OLD.sno,
+        :OLD.sname,
+        :OLD.course
+    );
+
+END;
+/
+
+CREATE OR REPLACE TRIGGER std2
+BEFORE UPDATE ON student2
+FOR EACH ROW
+
+BEGIN
+
+    INSERT INTO student3
+    VALUES(
+        :OLD.sno,
+        :OLD.sname,
+        :OLD.course
+    );
+
+END;
+/
+
+
+DELETE FROM student2
+WHERE sno = 111;
+
+UPDATE student2
+SET course = 'mca'
+WHERE sno = 113;
+
+SELECT * FROM student2;
+
+SELECT * FROM student3;`,
+
+
+11: `SET SERVEROUTPUT ON;
+
+DECLARE
+
+    num INT := &num;
+    res INT;
+
+    FUNCTION fact(num IN INT)
+    RETURN INT
+
+    AS
+
+        f INT;
+
+    BEGIN
+
+        f := 1;
+
+        FOR i IN 1..num
+        LOOP
+
+            f := f * i;
+
+        END LOOP;
+
+        RETURN f;
+
+    END fact;
+
+BEGIN
+
+    DBMS_OUTPUT.PUT_LINE(
+        'FINDING FACTORIAL OF: '
+        || num
+    );
+
+    res := fact(num);
+
+    DBMS_OUTPUT.PUT_LINE(
+        'FACTORIAL IS: '
+        || res
+    );
+
+END;
+/`,
+
+
+12: `CREATE TABLE bank(
+    accno NUMBER(10),
+    bal NUMBER(10,2)
+);
+
+INSERT INTO bank
+VALUES(111,114466);
+
+INSERT INTO bank
+VALUES(112,67000);
+
+INSERT INTO bank
+VALUES(113,65555);
+
+INSERT INTO bank
+VALUES(114,9000);
+
+INSERT INTO bank
+VALUES(115,800);
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+
+    acno NUMBER(10);
+    acbal NUMBER(10);
+    amt NUMBER(10);
+    operation CHAR(1);
+
+    overdraft EXCEPTION;
+
+BEGIN
+
+    acno := &accno;
+
+    amt := &amt;
+
+    operation := '&operation';
+
+    SELECT bal
+    INTO acbal
+    FROM bank
+    WHERE accno = acno;
+
+    IF operation = 'w' THEN
+
+        IF amt <= acbal THEN
+
+            UPDATE bank
+            SET bal = bal - amt
+            WHERE accno = acno;
+
+        ELSE
+
+            RAISE overdraft;
+
+        END IF;
+
+    END IF;
+
+    IF operation = 'd' THEN
+
+        UPDATE bank
+        SET bal = bal + amt
+        WHERE accno = acno;
+
+    END IF;
+
+EXCEPTION
+
+    WHEN overdraft THEN
+
+        DBMS_OUTPUT.PUT_LINE(
+            'The withdrawal is more than the current balance'
+        );
+
+END;
+/`,
+
+
+13: `SET SERVEROUTPUT ON;
+
+DECLARE
+
+    TYPE emprec IS RECORD(
+
+        eno NUMBER(10),
+        ename VARCHAR2(20),
+        job VARCHAR2(20)
+
+    );
+
+    rec1 emprec;
+
+BEGIN
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Enter the employee number:'
+    );
+
+    rec1.eno := &eno;
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Enter employee name:'
+    );
+
+    rec1.ename := '&ename';
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Enter employee job:'
+    );
+
+    rec1.job := '&job';
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Employee details:'
+    );
+
+    DBMS_OUTPUT.PUT_LINE(
+        '-------------------'
+    );
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Employee number: '
+        || rec1.eno
+    );
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Employee name: '
+        || rec1.ename
+    );
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Job is: '
+        || rec1.job
+    );
+
+END;
+/`,
+
+
+14: `CREATE OR REPLACE PACKAGE sum AS
+
+    PROCEDURE sump(
+        a NUMBER,
+        b NUMBER
+    );
+
+    PROCEDURE avgp(
+        a NUMBER,
+        b NUMBER
+    );
+
+    PROCEDURE meanp(
+        a NUMBER,
+        b NUMBER
+    );
+
+    PROCEDURE modp(
+        a NUMBER,
+        b NUMBER
+    );
+
+END sum;
+/
+
+CREATE OR REPLACE PACKAGE BODY sum AS
+
+    PROCEDURE sump(
+        a NUMBER,
+        b NUMBER
+    )
+    IS
+        c NUMBER;
+    BEGIN
+
+        c := a + b;
+
+        DBMS_OUTPUT.PUT_LINE(
+            'The sum is ' || c
+        );
+
+    END;
+
+
+    PROCEDURE avgp(
+        a NUMBER,
+        b NUMBER
+    )
+    IS
+        c NUMBER;
+        d NUMBER;
+    BEGIN
+
+        d := a + b;
+
+        c := d / 2;
+
+        DBMS_OUTPUT.PUT_LINE(
+            'The average is ' || c
+        );
+
+    END;
+
+
+    PROCEDURE meanp(
+        a NUMBER,
+        b NUMBER
+    )
+    IS
+        c NUMBER;
+        d NUMBER;
+    BEGIN
+
+        c := a + b;
+
+        d := c / 2;
+
+        DBMS_OUTPUT.PUT_LINE(
+            'The mean is ' || d
+        );
+
+    END;
+
+
+    PROCEDURE modp(
+        a NUMBER,
+        b NUMBER
+    )
+    IS
+
+    BEGIN
+
+        IF a = b THEN
+
+            DBMS_OUTPUT.PUT_LINE(
+                'The numbers are equal'
+            );
+
+        ELSE
+
+            DBMS_OUTPUT.PUT_LINE(
+                'Both numbers are different'
+            );
+
+        END IF;
+
+    END;
+
+END sum;
+/
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+
+    d NUMBER := 10;
+    e NUMBER := 20;
+
+BEGIN
+
+    sum.sump(d,e);
+
+    sum.avgp(d,e);
+
+    sum.meanp(d,e);
+
+    sum.modp(d,e);
+
+END;
+/`,
+
+
+15: `CREATE TABLE emp(
+    eemp_id NUMBER(10),
+    ename VARCHAR2(20),
+    dept VARCHAR2(10)
+);
+
+INSERT INTO emp
+VALUES(
+    111,
+    'john',
+    'mca'
+);
+
+INSERT INTO emp
+VALUES(
+    112,
+    'smith',
+    'mba'
+);
+
+CREATE OR REPLACE PROCEDURE emp100(
+    eemp_id NUMBER
+)
+AS
+
+BEGIN
+
+    EXECUTE IMMEDIATE
+        'DELETE FROM emp WHERE eemp_id = :num'
+        USING eemp_id;
+
+END;
+/
+
+EXEC emp100(111);
+
+
+CREATE OR REPLACE PROCEDURE insert_emp(
+    eemp_id NUMBER,
+    ename VARCHAR2,
+    dept VARCHAR2
+)
+AS
+
+BEGIN
+
+    EXECUTE IMMEDIATE
+        'INSERT INTO emp VALUES(:1,:2,:3)'
+        USING eemp_id, ename, dept;
+
+END;
+/
+
+EXEC insert_emp(
+    104,
+    'alex',
+    'mca'
+);
+
+
+DECLARE
+
+    sql_stmt VARCHAR2(200);
+
+    e_id NUMBER(5) := 104;
+
+    emp_rec emp%ROWTYPE;
+
+BEGIN
+
+    sql_stmt :=
+        'SELECT * FROM emp WHERE eemp_id = :id';
+
+    EXECUTE IMMEDIATE sql_stmt
+    INTO emp_rec
+    USING e_id;
+
+END;
+/`
+
+};
+
+
+// SHOW PROGRAM
+
+function showCode(number) {
+
+    const programNames = {
+
+        1: "SQL Commands with Master–Child Relationship",
+        2: "Object Types",
+        3: "VARRAYS in SQL",
+        4: "Count Records Using Cursor",
+        5: "Total Salary Using Cursor",
+        6: "Electricity Bill",
+        7: "EAMCET / ICET Rank",
+        8: "Bank Transaction Trigger",
+        9: "Batch Transaction Processing",
+        10: "Old Values Trigger",
+        11: "Factorial Function",
+        12: "OVERDRAFT Exception",
+        13: "Employee Record Type",
+        14: "Statistical Package",
+        15: "Dynamic SQL"
+
+    };
+
+    document.getElementById("codeTitle").innerText =
+        number + ". " + programNames[number];
+
+    document.getElementById("codeOutput").innerText =
+        codes[number];
+
+    // Highlight selected program
+
+    document.querySelectorAll(".program")
+        .forEach(item => {
+            item.classList.remove("active");
+        });
+
+    document.querySelectorAll(".program")[number - 1]
+        .classList.add("active");
+
+    // Scroll to code
+
+    document.getElementById("codeSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+
+// COPY CODE
+
+function copyCode() {
+
+    const code =
+        document.getElementById("codeOutput").innerText;
+
+    navigator.clipboard.writeText(code);
+
+    alert("Code copied successfully!");
+
+}
+
+
+// SEARCH PROGRAMS
+
+function searchPrograms() {
+
+    const search =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    const programs =
+        document.querySelectorAll(".program");
+
+    programs.forEach(program => {
+
+        const text =
+            program.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+
+            program.style.display = "block";
+
+        } else {
+
+            program.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
