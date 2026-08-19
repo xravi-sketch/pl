@@ -1,54 +1,1241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Software Engineering Laboratory</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}body{background:#eee;color:#222}.header{background:#444;color:#fff;padding:24px;text-align:center}.header h1{font-size:28px;margin-bottom:6px}.header p{color:#ddd}.layout{display:flex;min-height:calc(100vh - 112px)}.sidebar{width:300px;background:#2f2f2f;color:#fff;padding:20px;position:sticky;top:0;height:calc(100vh - 112px);overflow:auto}.sidebar h2{font-size:20px;margin-bottom:16px}.item{width:100%;border:0;background:#414141;color:#fff;text-align:left;padding:13px;margin:5px 0;border-radius:7px;cursor:pointer}.item:hover,.item.active{background:#707070}.main{flex:1;padding:30px}.card{background:#fff;max-width:1100px;margin:auto;padding:28px;border-radius:10px;box-shadow:0 3px 12px #0002}.card h2{margin-bottom:12px}.desc{background:#f5f5f5;border-left:5px solid #666;padding:16px;margin:18px 0;line-height:1.7}.actions{margin:16px 0;display:flex;gap:8px;flex-wrap:wrap}.btn{background:#444;color:#fff;border:0;border-radius:6px;padding:10px 15px;cursor:pointer}.btn:hover{background:#666}.code{background:#1e1e1e;color:#eee;padding:18px;border-radius:8px;overflow:auto;line-height:1.5;font-family:Consolas,monospace;font-size:13px;white-space:pre}.output{background:#f5f5f5;border:1px solid #ccc;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:Consolas,monospace;margin-top:10px}.diagram{width:100%;max-height:760px;object-fit:contain;background:#fafafa;border:1px solid #ccc;border-radius:8px;margin-top:10px}.note{padding:14px;background:#fafafa;border:1px solid #ddd;border-radius:7px;line-height:1.6}.footer{background:#444;color:#ddd;text-align:center;padding:16px}.tag{display:inline-block;background:#ddd;padding:5px 9px;border-radius:15px;font-size:12px;margin-bottom:10px}@media(max-width:800px){.layout{display:block}.sidebar{width:100%;height:auto;position:relative}.main{padding:15px}.card{padding:18px}.header h1{font-size:22px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Software Engineering Laboratory</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #eeeeee;
+            color: #222;
+        }
+
+        /* HEADER */
+        .header {
+            background: #444444;
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .header p {
+            color: #dddddd;
+        }
+
+        /* MAIN LAYOUT */
+        .layout {
+            display: flex;
+            min-height: calc(100vh - 112px);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 300px;
+            background: #2f2f2f;
+            color: white;
+            padding: 20px;
+
+            position: sticky;
+            top: 0;
+
+            height: calc(100vh - 112px);
+
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .item {
+            width: 100%;
+            border: none;
+
+            background: #414141;
+            color: white;
+
+            text-align: left;
+
+            padding: 13px;
+            margin: 5px 0;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+        .item:hover,
+        .item.active {
+            background: #707070;
+        }
+
+        /* CONTENT */
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 28px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 3px 12px #0002;
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+        }
+
+        .desc {
+            background: #f5f5f5;
+
+            border-left: 5px solid #666;
+
+            padding: 16px;
+
+            margin: 18px 0;
+
+            line-height: 1.7;
+        }
+
+        /* BUTTONS */
+        .actions {
+            margin: 16px 0;
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            background: #444444;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            padding: 10px 15px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #666666;
+        }
+
+        /* JAVA CODE */
+        .code {
+            background: #1e1e1e;
+
+            color: #eeeeee;
+
+            padding: 18px;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+
+            line-height: 1.5;
+
+            font-family: Consolas, monospace;
+
+            font-size: 13px;
+
+            white-space: pre;
+        }
+
+        /* OUTPUT */
+        .output {
+            background: #f5f5f5;
+
+            border: 1px solid #cccccc;
+
+            padding: 16px;
+
+            border-radius: 8px;
+
+            white-space: pre-wrap;
+
+            font-family: Consolas, monospace;
+
+            margin-top: 10px;
+        }
+
+        /* IMAGE */
+        .diagram {
+            display: block;
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            max-height: 800px;
+
+            object-fit: contain;
+
+            background: #fafafa;
+
+            border: 1px solid #cccccc;
+
+            border-radius: 8px;
+
+            margin: 15px auto;
+        }
+
+        /* IMAGE ERROR */
+        .image-error {
+            display: none;
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            border: 1px solid #f5c2c7;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            margin-top: 10px;
+
+            line-height: 1.6;
+        }
+
+        /* NOTE */
+        .note {
+            padding: 14px;
+
+            background: #fafafa;
+
+            border: 1px solid #dddddd;
+
+            border-radius: 7px;
+
+            line-height: 1.6;
+        }
+
+        /* TAG */
+        .tag {
+            display: inline-block;
+
+            background: #dddddd;
+
+            padding: 5px 9px;
+
+            border-radius: 15px;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #444444;
+
+            color: #dddddd;
+
+            text-align: center;
+
+            padding: 16px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                width: 100%;
+
+                height: auto;
+
+                position: relative;
+            }
+
+            .main {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .diagram {
+                max-height: none;
+            }
+        }
+    </style>
+
 </head>
+
 <body>
-<header class="header"><h1>Software Engineering Laboratory</h1><p>Programs 1–10 | SRS, Java Programs and UML/DFD Diagrams</p></header>
-<div class="layout">
-<aside class="sidebar"><h2>SE Lab Programs</h2>
-<button class="item active" onclick="show(1,this)">1. SRS – HTML Help System</button>
-<button class="item" onclick="show(2,this)">2. Function Point Calculator</button>
-<button class="item" onclick="show(3,this)">3. COCOMO II – ATM</button>
-<button class="item" onclick="show(4,this)">4. Cyclomatic Complexity</button>
-<button class="item" onclick="show(5,this)">5. ER Diagram – Computer Store</button>
-<button class="item" onclick="show(6,this)">6. Class Diagram – Telephone Billing</button>
-<button class="item" onclick="show(7,this)">7. Use Case Diagram – ATM</button>
-<button class="item" onclick="show(8,this)">8. Activity Diagram – Telephone Call</button>
-<button class="item" onclick="show(9,this)">9. Sequence Diagram – Railway Reservation</button>
-<button class="item" onclick="show(10,this)">10. DFD – Invoicing System</button>
-</aside>
-<main class="main"><div id="content"></div></main>
-</div>
-<footer class="footer">Software Engineering Laboratory</footer>
-<script>
-const A='assets/';
-const java2=`import java.util.Scanner;\n\npublic class FunctionPointCalculator {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int userInputs = 3;\n        int userOutputs = 60;\n        int userInquiries = 24;\n        int files = 8;\n        int externalInterfaces = 2;\n\n        int eiWeight = 4;\n        int eoWeight = 5;\n        int eqWeight = 4;\n        int ilfWeight = 10;\n        int eifWeight = 7;\n\n        int ufp = (userInputs * eiWeight) + (userOutputs * eoWeight)\n                + (userInquiries * eqWeight) + (files * ilfWeight)\n                + (externalInterfaces * eifWeight);\n\n        int totalAdjustment = 14 * 3;\n        double vaf = 0.65 + (0.01 * totalAdjustment);\n        double functionPoints = ufp * vaf;\n\n        System.out.println("UFP = " + ufp);\n        System.out.printf("VAF = %.2f%n", vaf);\n        System.out.printf("Function Point = %.2f%n", functionPoints);\n        sc.close();\n    }\n}`;
-const java3=`import java.util.Scanner;\n\npublic class CocomoIIObjectPointCalculator {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        int screens = 12;\n        int reports = 10;\n        int components = 80;\n\n        int screenWeight = 2;\n        int reportWeight = 5;\n        int componentWeight = 10;\n\n        int objectPoints = (screens * screenWeight)\n                + (reports * reportWeight)\n                + (components * componentWeight);\n\n        double reusePercentage = 0;\n        double newObjectPoints = objectPoints * (100 - reusePercentage) / 100;\n        double productivity = 13;\n        double effort = newObjectPoints / productivity;\n\n        System.out.println("Total Object Points = " + objectPoints);\n        System.out.println("New Object Points = " + newObjectPoints);\n        System.out.printf("Estimated Effort = %.2f person-months%n", effort);\n        sc.close();\n    }\n}`;
-const java4=`import java.util.Scanner;\n\npublic class CyclomaticComplexityCalculator {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        System.out.println("1. Using Decision Nodes");\n        System.out.println("2. Using Edges and Nodes");\n        System.out.print("Enter choice: ");\n        int choice = sc.nextInt();\n\n        if (choice == 1) {\n            System.out.print("Enter number of decision nodes: ");\n            int decisions = sc.nextInt();\n            int complexity = decisions + 1;\n            System.out.println("V(G) = D + 1");\n            System.out.println("Cyclomatic Complexity = " + complexity);\n        } else if (choice == 2) {\n            System.out.print("Enter edges (E): ");\n            int edges = sc.nextInt();\n            System.out.print("Enter nodes (N): ");\n            int nodes = sc.nextInt();\n            int complexity = edges - nodes + 2;\n            System.out.println("V(G) = E - N + 2");\n            System.out.println("Cyclomatic Complexity = " + complexity);\n        } else {\n            System.out.println("Invalid choice");\n        }\n        sc.close();\n    }\n}`;
-const data={
-1:{title:'1. SRS Document – HTML Help System',body:`<div class="desc"><b>Requirement:</b> Design an SRS document for an HTML Help System.</div><div class="note">The SRS Word document is included with this website. Click <b>Open SRS</b> to open the actual .docx file in a compatible browser/office application, or use <b>Download SRS</b>.</div><div class="actions"><a class="btn" href="SRS_HTML_Help_System.docx" target="_blank">Open SRS</a><a class="btn" href="SRS_HTML_Help_System.docx" download>Download SRS</a></div>`},
-2:{title:'2. Function Point Calculator',body:`<div class="desc"><b>Task:</b> Compute function point value for 3 inputs, 60 outputs, 24 inquiries, 8 files and 2 external interfaces. Average complexity is assumed.</div><h3>Java Program</h3><div class="actions"><button class="btn" onclick="copyText(java2)">Copy Java Code</button></div><pre class="code">${esc(java2)}</pre><h3 style="margin-top:20px">Sample Output</h3><pre class="output">UFP = 502\nVAF = 1.07\nFunction Point = 537.14</pre>`},
-3:{title:'3. COCOMO II Model – Simple ATM',body:`<div class="desc"><b>Task:</b> Use the COCOMO II/Application Composition approach for an ATM with 12 screens, 10 reports and 80 components, assuming average complexity and maturity.</div><h3>Java Program</h3><div class="actions"><button class="btn" onclick="copyText(java3)">Copy Java Code</button></div><pre class="code">${esc(java3)}</pre><h3 style="margin-top:20px">Sample Output</h3><pre class="output">Total Object Points = 874\nNew Object Points = 874.0\nEstimated Effort = 67.23 person-months</pre>`},
-4:{title:'4. Cyclomatic Complexity Calculator',body:`<div class="desc"><b>Task:</b> Develop a software tool that computes cyclomatic complexity for a programming-language module.</div><h3>Java Program</h3><div class="actions"><button class="btn" onclick="copyText(java4)">Copy Java Code</button></div><pre class="code">${esc(java4)}</pre><h3 style="margin-top:20px">Sample Output</h3><pre class="output">1. Using Decision Nodes\n2. Using Edges and Nodes\nEnter choice: 1\nEnter number of decision nodes: 4\nV(G) = D + 1\nCyclomatic Complexity = 5</pre>`},
-5:{title:'5. ER Diagram – Web-based Order Processing System for a Computer Store',body:imageBody('WhatsApp%20Image%202026-08-19%20at%204.20.05%20PM.jpeg')},
-6:{title:'6. Class Diagram – Telephone Billing Payment System',body:imageBody('image.png')},
-7:{title:'7. Use Case Diagram – ATM System',body:imageBody('uml7.jpeg')},
-8:{title:'8. Activity / State Diagram – Telephone Call Receiving',body:imageBody('uml8.jpeg')},
-9:{title:'9. Sequence Diagram – Online Railway Reservation System',body:imageBody('uml9.jpeg')},
-10:{title:'10. DFD – Simple Invoicing System for a Small Business Firm',body:imageBody('uml10.jpeg')}
-};
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function imageBody(file){return `<div class="note">The diagram supplied for this lab program is shown below. Use <b>Copy Image</b> to copy it to the clipboard, or <b>Download Image</b> to save it.</div><div class="actions"><button class="btn" onclick="copyImage('${A+file}')">Copy Image</button><a class="btn" href="${A+file}" download>Download Image</a><a class="btn" href="${A+file}" target="_blank">Open Full Image</a></div><img class="diagram" src="${A+file}" alt="${file}">`;}
-function copyText(t){navigator.clipboard.writeText(t).then(()=>alert('Code copied successfully.')).catch(()=>alert('Copy is not available in this browser.'));}
-async function copyImage(src){try{const r=await fetch(src);const b=await r.blob();await navigator.clipboard.write([new ClipboardItem({[b.type]:b})]);alert('Image copied successfully. You can paste it into Word.');}catch(e){alert('Image copy is blocked by this browser/file mode. Use Download Image instead.');}}
-function show(n,btn){document.querySelectorAll('.item').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');const d=data[n];document.getElementById('content').innerHTML=`<div class="card"><span class="tag">PROGRAM ${n}</span><h2>${d.title}</h2>${d.body}</div>`;window.scrollTo({top:0,behavior:'smooth'});}
-show(1,document.querySelector('.item'));
-</script>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <h1>Software Engineering Laboratory</h1>
+
+        <p>
+            Programs 1–10 | SRS, Java Programs and UML / DFD Diagrams
+        </p>
+
+    </header>
+
+
+    <!-- LAYOUT -->
+
+    <div class="layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h2>SE Lab Programs</h2>
+
+
+            <button class="item active" onclick="showProgram(1, this)">
+                1. SRS – HTML Help System
+            </button>
+
+
+            <button class="item" onclick="showProgram(2, this)">
+                2. Function Point Calculator
+            </button>
+
+
+            <button class="item" onclick="showProgram(3, this)">
+                3. COCOMO II – ATM
+            </button>
+
+
+            <button class="item" onclick="showProgram(4, this)">
+                4. Cyclomatic Complexity
+            </button>
+
+
+            <button class="item" onclick="showProgram(5, this)">
+                5. ER Diagram – Computer Store
+            </button>
+
+
+            <button class="item" onclick="showProgram(6, this)">
+                6. Class Diagram – Telephone Billing
+            </button>
+
+
+            <button class="item" onclick="showProgram(7, this)">
+                7. Use Case Diagram – ATM
+            </button>
+
+
+            <button class="item" onclick="showProgram(8, this)">
+                8. Activity Diagram – Telephone Call
+            </button>
+
+
+            <button class="item" onclick="showProgram(9, this)">
+                9. Sequence Diagram – Railway Reservation
+            </button>
+
+
+            <button class="item" onclick="showProgram(10, this)">
+                10. DFD – Invoicing System
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main">
+
+            <div id="content"></div>
+
+        </main>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        Software Engineering Laboratory
+
+    </footer>
+
+
+    <script>
+
+        /*
+         * IMPORTANT:
+         *
+         * All files are in the SAME folder as se.html.
+         *
+         * Therefore we DO NOT use:
+         *
+         * assets/
+         *
+         */
+
+        const BASE_PATH = "";
+
+
+        /* =========================
+           JAVA PROGRAM 2
+           ========================= */
+
+        const java2 = `
+import java.util.Scanner;
+
+public class FunctionPointCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int userInputs = 3;
+        int userOutputs = 60;
+        int userInquiries = 24;
+        int files = 8;
+        int externalInterfaces = 2;
+
+        int eiWeight = 4;
+        int eoWeight = 5;
+        int eqWeight = 4;
+        int ilfWeight = 10;
+        int eifWeight = 7;
+
+        int ufp =
+                (userInputs * eiWeight)
+                + (userOutputs * eoWeight)
+                + (userInquiries * eqWeight)
+                + (files * ilfWeight)
+                + (externalInterfaces * eifWeight);
+
+        int totalAdjustment = 14 * 3;
+
+        double vaf =
+                0.65 + (0.01 * totalAdjustment);
+
+        double functionPoints =
+                ufp * vaf;
+
+        System.out.println("UFP = " + ufp);
+
+        System.out.printf(
+            "VAF = %.2f%n",
+            vaf
+        );
+
+        System.out.printf(
+            "Function Point = %.2f%n",
+            functionPoints
+        );
+
+        sc.close();
+    }
+}
+`;
+
+
+        /* =========================
+           JAVA PROGRAM 3
+           ========================= */
+
+        const java3 = `
+import java.util.Scanner;
+
+public class CocomoIIObjectPointCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int screens = 12;
+        int reports = 10;
+        int components = 80;
+
+        int screenWeight = 2;
+        int reportWeight = 5;
+        int componentWeight = 10;
+
+        int objectPoints =
+                (screens * screenWeight)
+                + (reports * reportWeight)
+                + (components * componentWeight);
+
+        double reusePercentage = 0;
+
+        double newObjectPoints =
+                objectPoints *
+                (100 - reusePercentage) / 100;
+
+        double productivity = 13;
+
+        double effort =
+                newObjectPoints / productivity;
+
+        System.out.println(
+            "Total Object Points = "
+            + objectPoints
+        );
+
+        System.out.println(
+            "New Object Points = "
+            + newObjectPoints
+        );
+
+        System.out.printf(
+            "Estimated Effort = %.2f person-months%n",
+            effort
+        );
+
+        sc.close();
+    }
+}
+`;
+
+
+        /* =========================
+           JAVA PROGRAM 4
+           ========================= */
+
+        const java4 = `
+import java.util.Scanner;
+
+public class CyclomaticComplexityCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println(
+            "1. Using Decision Nodes"
+        );
+
+        System.out.println(
+            "2. Using Edges and Nodes"
+        );
+
+        System.out.print(
+            "Enter choice: "
+        );
+
+        int choice = sc.nextInt();
+
+
+        if (choice == 1) {
+
+            System.out.print(
+                "Enter number of decision nodes: "
+            );
+
+            int decisions = sc.nextInt();
+
+            int complexity =
+                    decisions + 1;
+
+            System.out.println(
+                "V(G) = D + 1"
+            );
+
+            System.out.println(
+                "Cyclomatic Complexity = "
+                + complexity
+            );
+
+        }
+
+        else if (choice == 2) {
+
+            System.out.print(
+                "Enter edges (E): "
+            );
+
+            int edges = sc.nextInt();
+
+            System.out.print(
+                "Enter nodes (N): "
+            );
+
+            int nodes = sc.nextInt();
+
+            int complexity =
+                    edges - nodes + 2;
+
+            System.out.println(
+                "V(G) = E - N + 2"
+            );
+
+            System.out.println(
+                "Cyclomatic Complexity = "
+                + complexity
+            );
+
+        }
+
+        else {
+
+            System.out.println(
+                "Invalid choice"
+            );
+
+        }
+
+        sc.close();
+    }
+}
+`;
+
+
+        /* =========================
+           DATA
+           ========================= */
+
+        const programs = {
+
+
+            /* PROGRAM 1 */
+
+            1: {
+
+                title:
+                    "1. SRS Document – HTML Help System",
+
+                body: `
+
+                    <div class="desc">
+
+                        <b>Requirement:</b>
+
+                        Design an SRS document
+                        for an HTML Help System.
+
+                    </div>
+
+
+                    <div class="note">
+
+                        The SRS Word document is
+                        available in this project.
+
+                        You can open it or download it.
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <a
+                            class="btn"
+                            href="SRS_HTML_Help_System.docx"
+                            target="_blank"
+                        >
+                            Open SRS
+                        </a>
+
+
+                        <a
+                            class="btn"
+                            href="SRS_HTML_Help_System.docx"
+                            download
+                        >
+                            Download SRS
+                        </a>
+
+                    </div>
+
+                `
+            },
+
+
+            /* PROGRAM 2 */
+
+            2: {
+
+                title:
+                    "2. Function Point Calculator",
+
+                body: `
+
+                    <div class="desc">
+
+                        <b>Task:</b>
+
+                        Compute function point value
+                        for 3 inputs, 60 outputs,
+                        24 inquiries, 8 files
+                        and 2 external interfaces.
+
+                    </div>
+
+
+                    <h3>Java Program</h3>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="btn"
+                            onclick="copyCode(java2)"
+                        >
+                            Copy Java Code
+                        </button>
+
+                    </div>
+
+
+                    <pre class="code">${escapeHTML(java2)}</pre>
+
+
+                    <h3 style="margin-top:20px">
+                        Sample Output
+                    </h3>
+
+
+                    <pre class="output">UFP = 502
+VAF = 1.07
+Function Point = 537.14</pre>
+
+                `
+            },
+
+
+            /* PROGRAM 3 */
+
+            3: {
+
+                title:
+                    "3. COCOMO II Model – Simple ATM",
+
+                body: `
+
+                    <div class="desc">
+
+                        <b>Task:</b>
+
+                        Use the COCOMO II /
+                        Application Composition approach
+                        for an ATM system.
+
+                    </div>
+
+
+                    <h3>Java Program</h3>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="btn"
+                            onclick="copyCode(java3)"
+                        >
+                            Copy Java Code
+                        </button>
+
+                    </div>
+
+
+                    <pre class="code">${escapeHTML(java3)}</pre>
+
+
+                    <h3 style="margin-top:20px">
+                        Sample Output
+                    </h3>
+
+
+                    <pre class="output">Total Object Points = 874
+New Object Points = 874.0
+Estimated Effort = 67.23 person-months</pre>
+
+                `
+            },
+
+
+            /* PROGRAM 4 */
+
+            4: {
+
+                title:
+                    "4. Cyclomatic Complexity Calculator",
+
+                body: `
+
+                    <div class="desc">
+
+                        <b>Task:</b>
+
+                        Develop a software tool
+                        that computes cyclomatic
+                        complexity for a module.
+
+                    </div>
+
+
+                    <h3>Java Program</h3>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="btn"
+                            onclick="copyCode(java4)"
+                        >
+                            Copy Java Code
+                        </button>
+
+                    </div>
+
+
+                    <pre class="code">${escapeHTML(java4)}</pre>
+
+
+                    <h3 style="margin-top:20px">
+                        Sample Output
+                    </h3>
+
+
+                    <pre class="output">1. Using Decision Nodes
+2. Using Edges and Nodes
+Enter choice: 1
+Enter number of decision nodes: 4
+V(G) = D + 1
+Cyclomatic Complexity = 5</pre>
+
+                `
+            },
+
+
+            /* PROGRAM 5 */
+
+            5: {
+
+                title:
+                    "5. ER Diagram – Web-based Order Processing System for a Computer Store",
+
+                body:
+                    createImageSection(
+                        "er.jpeg",
+                        "ER Diagram – Computer Store"
+                    )
+
+            },
+
+
+            /* PROGRAM 6 */
+
+            6: {
+
+                title:
+                    "6. Class Diagram – Telephone Billing Payment System",
+
+                body:
+                    createImageSection(
+                        "image.png",
+                        "Class Diagram – Telephone Billing"
+                    )
+
+            },
+
+
+            /* PROGRAM 7 */
+
+            7: {
+
+                title:
+                    "7. Use Case Diagram – ATM System",
+
+                body:
+                    createImageSection(
+                        "uml7.jpeg",
+                        "Use Case Diagram – ATM System"
+                    )
+
+            },
+
+
+            /* PROGRAM 8 */
+
+            8: {
+
+                title:
+                    "8. Activity / State Diagram – Telephone Call Receiving",
+
+                body:
+                    createImageSection(
+                        "uml8.jpeg",
+                        "Activity / State Diagram – Telephone Call"
+                    )
+
+            },
+
+
+            /* PROGRAM 9 */
+
+            9: {
+
+                title:
+                    "9. Sequence Diagram – Online Railway Reservation System",
+
+                body:
+                    createImageSection(
+                        "uml9.jpeg",
+                        "Sequence Diagram – Railway Reservation"
+                    )
+
+            },
+
+
+            /* PROGRAM 10 */
+
+            10: {
+
+                title:
+                    "10. DFD – Simple Invoicing System for a Small Business Firm",
+
+                body:
+                    createImageSection(
+                        "uml10.jpeg",
+                        "DFD – Invoicing System"
+                    )
+
+            }
+
+        };
+
+
+        /* =========================
+           ESCAPE HTML
+           ========================= */
+
+        function escapeHTML(text) {
+
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+
+        }
+
+
+        /* =========================
+           IMAGE SECTION
+           ========================= */
+
+        function createImageSection(
+            fileName,
+            imageName
+        ) {
+
+            return `
+
+                <div class="note">
+
+                    <b>${imageName}</b>
+
+                    <br><br>
+
+                    The diagram for this
+                    program is displayed below.
+
+                    <br>
+
+                    You can open the image,
+                    download it, or copy it.
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="btn"
+                        onclick="copyImage('${fileName}')"
+                    >
+                        Copy Image
+                    </button>
+
+
+                    <a
+                        class="btn"
+                        href="${fileName}"
+                        download
+                    >
+                        Download Image
+                    </a>
+
+
+                    <a
+                        class="btn"
+                        href="${fileName}"
+                        target="_blank"
+                    >
+                        Open Full Image
+                    </a>
+
+                </div>
+
+
+                <img
+                    class="diagram"
+                    src="${fileName}"
+                    alt="${imageName}"
+                    onerror="imageError(this)"
+                >
+
+
+                <div
+                    class="image-error"
+                    id="imageError-${fileName.replace(/[^a-zA-Z0-9]/g, '')}"
+                >
+
+                    ❌ <b>Image could not be loaded.</b>
+
+                    <br><br>
+
+                    Make sure the file
+
+                    <b>${fileName}</b>
+
+                    exists in the same GitHub
+                    folder as <b>se.html</b>.
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =========================
+           IMAGE ERROR
+           ========================= */
+
+        function imageError(img) {
+
+            img.style.display = "none";
+
+            const errorBox =
+                img.nextElementSibling;
+
+            if (errorBox) {
+
+                errorBox.style.display = "block";
+
+            }
+
+        }
+
+
+        /* =========================
+           SHOW PROGRAM
+           ========================= */
+
+        function showProgram(
+            number,
+            button
+        ) {
+
+            document
+                .querySelectorAll(".item")
+                .forEach(function(item) {
+
+                    item.classList.remove("active");
+
+                });
+
+
+            if (button) {
+
+                button.classList.add("active");
+
+            }
+
+
+            const program =
+                programs[number];
+
+
+            document.getElementById(
+                "content"
+            ).innerHTML = `
+
+                <div class="card">
+
+                    <span class="tag">
+                        PROGRAM ${number}
+                    </span>
+
+                    <h2>
+                        ${program.title}
+                    </h2>
+
+                    ${program.body}
+
+                </div>
+
+            `;
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        /* =========================
+           COPY JAVA CODE
+           ========================= */
+
+        function copyCode(code) {
+
+            navigator
+                .clipboard
+                .writeText(code)
+                .then(function() {
+
+                    alert(
+                        "Java code copied successfully!"
+                    );
+
+                })
+                .catch(function() {
+
+                    alert(
+                        "Unable to copy code."
+                    );
+
+                });
+
+        }
+
+
+        /* =========================
+           COPY IMAGE
+           ========================= */
+
+        async function copyImage(
+            fileName
+        ) {
+
+            try {
+
+                const response =
+                    await fetch(fileName);
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Image not found"
+                    );
+
+                }
+
+
+                const blob =
+                    await response.blob();
+
+
+                const imageBlob =
+                    new Blob(
+                        [blob],
+                        {
+                            type: blob.type
+                        }
+                    );
+
+
+                await navigator.clipboard.write([
+
+                    new ClipboardItem({
+
+                        [blob.type]:
+                            imageBlob
+
+                    })
+
+                ]);
+
+
+                alert(
+                    "Image copied successfully! You can paste it into Word."
+                );
+
+            }
+
+            catch (error) {
+
+                alert(
+                    "Image copy is not available. Please use Download Image."
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           LOAD PROGRAM 1
+           ========================= */
+
+        showProgram(
+            1,
+            document.querySelector(".item")
+        );
+
+    </script>
+
 </body>
+
 </html>
