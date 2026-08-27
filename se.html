@@ -488,56 +488,60 @@ public class FunctionPointCalculator {
            ========================= */
 
         const java3 = `
+Source code:
 import java.util.Scanner;
-
-public class CocomoIIObjectPointCalculator {
-
+public class CocomoII {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
-        int screens = 12;
-        int reports = 10;
-        int components = 80;
+        // Step 1: Input project size
+        System.out.print("Enter project size in KLOC: ");
+        double size = sc.nextDouble();
 
-        int screenWeight = 2;
-        int reportWeight = 5;
-        int componentWeight = 10;
+        // Step 2: Input scale factors
+        System.out.println("Enter ratings for Scale Factors (0=Extra High, 5=Very Low):");
+        System.out.print("PREC: "); int PREC = sc.nextInt();
+        System.out.print("FLEX: "); int FLEX = sc.nextInt();
+        System.out.print("RESL: "); int RESL = sc.nextInt();
+        System.out.print("TEAM: "); int TEAM = sc.nextInt();
+        System.out.print("PMAT: "); int PMAT = sc.nextInt();
 
-        int objectPoints =
-                (screens * screenWeight)
-                + (reports * reportWeight)
-                + (components * componentWeight);
+        int sumSF = PREC + FLEX + RESL + TEAM + PMAT;
+        double B = 0.91 + 0.01 * sumSF;
 
-        double reusePercentage = 0;
+        // Step 3: Input cost drivers
+        System.out.println("Enter cost driver multipliers:");
+        System.out.print("RELY: "); double RELY = sc.nextDouble();
+        System.out.print("DATA: "); double DATA = sc.nextDouble();
+        System.out.print("CPLX: "); double CPLX = sc.nextDouble();
+        System.out.print("TIME: "); double TIME = sc.nextDouble();
+        System.out.print("STOR: "); double STOR = sc.nextDouble();
+        System.out.print("ACAP: "); double ACAP = sc.nextDouble();
+        System.out.print("PCAP: "); double PCAP = sc.nextDouble();
+        System.out.print("TOOL: "); double TOOL = sc.nextDouble();
+       double costDrivers = RELY * DATA * CPLX * TIME * STOR * ACAP * PCAP * TOOL;
 
-        double newObjectPoints =
-                objectPoints *
-                (100 - reusePercentage) / 100;
+        // Step 4: Effort calculation
+        double A = 2.94; // constant
+        double effort = A * Math.pow(size, B) * costDrivers;
 
-        double productivity = 13;
 
-        double effort =
-                newObjectPoints / productivity;
+        // Step 5: Approximate schedule
+        double monthsWith4Devs = effort / 4.0;
+        double monthsWith6Devs = effort / 6.0;
 
-        System.out.println(
-            "Total Object Points = "
-            + objectPoints
-        );
-
-        System.out.println(
-            "New Object Points = "
-            + newObjectPoints
-        );
-
-        System.out.printf(
-            "Estimated Effort = %.2f person-months%n",
-            effort
-        );
+        // Output results
+        System.out.println("\n--- COCOMO II Results ---");
+        System.out.println("Scale Factor (B): " + B);
+        System.out.println("Effort (person-months): " + effort);
+        System.out.println("Estimated duration with 4 developers: " + monthsWith4Devs + " months");
+        System.out.println("Estimated duration with 6 developers: " + monthsWith6Devs + " months");
 
         sc.close();
     }
 }
+
+
 `;
 
 
