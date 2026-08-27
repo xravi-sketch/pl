@@ -795,7 +795,7 @@ Cyclomatic Complexity = 5</pre>
                         <b>ER Diagram – Computer Store</b>
                         <br><br>
                         The ER diagram is shown below. You can also open or download
-                        the Word document version.
+                        the image and the Word (DOCX) document version.
                     </div>
 
                     <div class="actions">
@@ -833,7 +833,8 @@ Cyclomatic Complexity = 5</pre>
                 body:
                     createImageSection(
                         "uml8.jpeg",
-                        "Class Diagram – Telephone Billing"
+                        "Class Diagram – Telephone Billing",
+                        "Class_Diagram.docx"
                     )
 
             },
@@ -849,7 +850,8 @@ Cyclomatic Complexity = 5</pre>
                 body:
                     createImageSection(
                         "uml7.jpeg",
-                        "Use Case Diagram – ATM System"
+                        "Use Case Diagram – ATM System",
+                        "ATM_System_UML_Editable_Word(1).docx"
                     )
 
             },
@@ -865,7 +867,8 @@ Cyclomatic Complexity = 5</pre>
                 body:
                     createImageSection(
                         "image.png",
-                        "Activity / State Diagram – Telephone Call"
+                        "Activity / State Diagram – Telephone Call",
+                        "Activity_Diagram.docx"
                     )
 
             },
@@ -881,7 +884,8 @@ Cyclomatic Complexity = 5</pre>
                 body:
                     createImageSection(
                         "uml9.jpeg",
-                        "Sequence Diagram – Railway Reservation"
+                        "Sequence Diagram – Railway Reservation",
+                        "Sequence_Diagram.docx"
                     )
 
             },
@@ -897,7 +901,8 @@ Cyclomatic Complexity = 5</pre>
                 body:
                     createImageSection(
                         "uml10.jpeg",
-                        "DFD – Invoicing System"
+                        "DFD – Invoicing System",
+                        "DFD_Diagram.docx"
                     )
 
             }
@@ -925,7 +930,8 @@ Cyclomatic Complexity = 5</pre>
 
         function createImageSection(
             fileName,
-            imageName
+            imageName,
+            docxFileName = ""
         ) {
 
             return `
@@ -941,8 +947,8 @@ Cyclomatic Complexity = 5</pre>
 
                     <br>
 
-                    You can open the image,
-                    download it, or copy it.
+                    You can open or download
+                    the image and the Word (DOCX) file.
 
                 </div>
 
@@ -974,6 +980,24 @@ Cyclomatic Complexity = 5</pre>
                         Open Full Image
                     </a>
 
+                    ${docxFileName ? `
+                    <a
+                        class="btn"
+                        href="${docxFileName}"
+                        target="_blank"
+                    >
+                        Open Word DOCX
+                    </a>
+
+                    <a
+                        class="btn"
+                        href="${docxFileName}"
+                        download
+                    >
+                        Download Word DOCX
+                    </a>
+                    ` : ""}
+
                 </div>
 
 
@@ -998,8 +1022,8 @@ Cyclomatic Complexity = 5</pre>
 
                     <b>${fileName}</b>
 
-                    exists in the same GitHub
-                    folder as <b>se.html</b>.
+                    exists in the same folder
+                    as <b>se.html</b>.
 
                 </div>
 
