@@ -430,56 +430,42 @@
            ========================= */
 
         const java2 = `
-import java.util.Scanner;
-
 public class FunctionPointCalculator {
 
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        int userInputs = 3;
+        // Given counts
+        int userInputs = 32;
         int userOutputs = 60;
         int userInquiries = 24;
         int files = 8;
         int externalInterfaces = 2;
+        // Average complexity weights
+        int weightInputs = 4;
+        int weightOutputs = 5;
+        int weightInquiries = 4;
+        int weightFiles = 10;
+        int weightExternalInterfaces = 7;
 
-        int eiWeight = 4;
-        int eoWeight = 5;
-        int eqWeight = 4;
-        int ilfWeight = 10;
-        int eifWeight = 7;
+        // Calculate Unadjusted Function Points (UFP)
+        int ufp = (userInputs * weightInputs)
+                + (userOutputs * weightOutputs) + (userInquiries * weightInquiries)
+                + (files * weightFiles)  + (externalInterfaces * weightExternalInterfaces);
 
-        int ufp =
-                (userInputs * eiWeight)
-                + (userOutputs * eoWeight)
-                + (userInquiries * eqWeight)
-                + (files * ilfWeight)
-                + (externalInterfaces * eifWeight);
+        // Complexity Adjustment Factor (CAF) for average complexity
+        double caf = 1.0; // since average values assumed
 
-        int totalAdjustment = 14 * 3;
+        // Final Function Point value
+        double fp = ufp * caf;
 
-        double vaf =
-                0.65 + (0.01 * totalAdjustment);
-
-        double functionPoints =
-                ufp * vaf;
-
-        System.out.println("UFP = " + ufp);
-
-        System.out.printf(
-            "VAF = %.2f%n",
-            vaf
-        );
-
-        System.out.printf(
-            "Function Point = %.2f%n",
-            functionPoints
-        );
-
-        sc.close();
+        // Display results
+        System.out.println("Unadjusted Function Points (UFP): " + ufp);
+        System.out.println("Complexity Adjustment Factor (CAF): " + caf);
+        System.out.println("Final Function Point Value: " + fp);
     }
 }
+
+
+Function point raa
 `;
 
 
@@ -550,90 +536,32 @@ public class CocomoII {
            ========================= */
 
         const java4 = `
-import java.util.Scanner;
+import java.util.*;
 
-public class CyclomaticComplexityCalculator {
+class Cyclomatic {
+    public static void main(String args[]) {
+        Scanner s = new Scanner(System.in);
 
-    public static void main(String[] args) {
+        // Formula 1: Graph-based (E - N + 2)
+        System.out.println("Enter the number of edges:");
+        int e = s.nextInt();
+        System.out.println("Enter the number of nodes:");
+        int n = s.nextInt();
 
-        Scanner sc = new Scanner(System.in);
+        int vgGraph = e - n + 2;
+        System.out.println("Cyclomatic Complexity (Graph formula: E - N + 2) = " + vgGraph);
 
-        System.out.println(
-            "1. Using Decision Nodes"
-        );
+        // Formula 2: Decision-based (P + 1)
+        System.out.println("Enter the number of decision points (predicate nodes):");
+        int p = s.nextInt();
 
-        System.out.println(
-            "2. Using Edges and Nodes"
-        );
-
-        System.out.print(
-            "Enter choice: "
-        );
-
-        int choice = sc.nextInt();
-
-
-        if (choice == 1) {
-
-            System.out.print(
-                "Enter number of decision nodes: "
-            );
-
-            int decisions = sc.nextInt();
-
-            int complexity =
-                    decisions + 1;
-
-            System.out.println(
-                "V(G) = D + 1"
-            );
-
-            System.out.println(
-                "Cyclomatic Complexity = "
-                + complexity
-            );
-
-        }
-
-        else if (choice == 2) {
-
-            System.out.print(
-                "Enter edges (E): "
-            );
-
-            int edges = sc.nextInt();
-
-            System.out.print(
-                "Enter nodes (N): "
-            );
-
-            int nodes = sc.nextInt();
-
-            int complexity =
-                    edges - nodes + 2;
-
-            System.out.println(
-                "V(G) = E - N + 2"
-            );
-
-            System.out.println(
-                "Cyclomatic Complexity = "
-                + complexity
-            );
-
-        }
-
-        else {
-
-            System.out.println(
-                "Invalid choice"
-            );
-
-        }
-
-        sc.close();
+        int vgDecision = p + 1;
+        System.out.println("Cyclomatic Complexity (Decision formula: P + 1) = " + vgDecision);
     }
 }
+
+
+
 `;
 
 
