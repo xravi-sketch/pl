@@ -790,12 +790,36 @@ Cyclomatic Complexity = 5</pre>
                 title:
                     "5. ER Diagram – Web-based Order Processing System for a Computer Store",
 
-                body:
-                    createImageSection(
-                        "er.jpeg",
-                        "ER Diagram – Computer Store"
-                    )
+                body: `
+                    <div class="note">
+                        <b>ER Diagram – Computer Store</b>
+                        <br><br>
+                        The ER diagram is shown below. You can also open or download
+                        the Word document version.
+                    </div>
 
+                    <div class="actions">
+                        <a class="btn" href="ER_Diagram.docx" target="_blank">
+                            Open ER Diagram DOCX
+                        </a>
+                        <a class="btn" href="ER_Diagram.docx" download>
+                            Download ER Diagram DOCX
+                        </a>
+                    </div>
+
+                    <img
+                        class="diagram"
+                        src="er.jpeg"
+                        alt="ER Diagram – Computer Store"
+                        onerror="imageError(this)"
+                    >
+
+                    <div class="image-error">
+                        ❌ <b>Image could not be loaded.</b>
+                        <br><br>
+                        Make sure <b>er.jpeg</b> exists in the same folder as this HTML file.
+                    </div>
+                `
             },
 
 
@@ -822,28 +846,12 @@ Cyclomatic Complexity = 5</pre>
                 title:
                     "7. Use Case Diagram – ATM System",
 
-                body: `
-                    <div class="note">
-                        <b>Use Case Diagram – ATM System</b>
-                        <br><br>
-                        The ATM UML diagram is provided as a Word document.
-                        You can open, edit, or download the DOCX file.
-                    </div>
+                body:
+                    createImageSection(
+                        "uml7.jpeg",
+                        "Use Case Diagram – ATM System"
+                    )
 
-                    <div class="actions">
-                        <a class="btn"
-                           href="ATM_System_UML_Editable_Word.docx"
-                           target="_blank">
-                            Open ATM UML DOCX
-                        </a>
-
-                        <a class="btn"
-                           href="ATM_System_UML.docx"
-                           download>
-                            Download ATM UML DOCX
-                        </a>
-                    </div>
-                `
             },
 
 
