@@ -134,6 +134,21 @@
         background: #444444;
     }
 
+    .setup-btn {
+        display: inline-block;
+        background: #666666;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .setup-btn:hover {
+        background: #444444;
+    }
+
     footer {
         text-align: center;
         padding: 22px;
@@ -176,9 +191,7 @@
         placeholder="Search program..."
         onkeyup="searchPrograms()"
     >
-
-
-    <div class="program-list" id="programList">
+<div class="program-list" id="programList">
 
         <div class="program" onclick="showCode(1)">
             <span class="number">1</span>
@@ -255,6 +268,11 @@
             Dynamic SQL
         </div>
 
+        <div class="program" onclick="showSetup()">
+            <span class="number">16</span>
+            SQL / SQL*Plus Setup
+        </div>
+
     </div>
 
 
@@ -275,6 +293,32 @@ Click any program from the list above.
 SQL / PL-SQL code will appear here.
         </pre>
 
+    </div>
+
+    <!-- SQL / SQL*Plus SETUP -->
+    <div class="code-section" id="setupSection" style="display:none;">
+        <h2 id="setupTitle">16. SQL / SQL*Plus Setup</h2>
+
+        <p>
+            Click a button below to download the SQL*Plus setup files or open
+            the setup guide.
+        </p>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="OracleXE112_Win64.zip" download class="setup-btn">
+                Download SQLPLUS_SETUP.zip
+            </a>
+
+           
+        </div>
+
+        <pre>SQL*Plus commands:
+
+sqlplus -v
+
+sqlplus / as sysdba
+
+</pre>
     </div>
 
 </div>
@@ -1408,6 +1452,29 @@ function showCode(number) {
         .scrollIntoView({
             behavior: "smooth"
         });
+}
+
+
+// SHOW SQL / SQL*PLUS SETUP
+function showSetup() {
+
+    document.getElementById("codeTitle").innerText =
+        "16. SQL / SQL*Plus Setup";
+
+    document.getElementById("codeOutput").innerText =
+        "Click the buttons below to download SQLPLUS_SETUP.zip or open the Setup Guide.";
+
+    document.getElementById("setupSection").style.display = "block";
+
+    document.querySelectorAll(".program").forEach(item => {
+        item.classList.remove("active");
+    });
+
+    document.querySelectorAll(".program")[15].classList.add("active");
+
+    document.getElementById("setupSection").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
 
